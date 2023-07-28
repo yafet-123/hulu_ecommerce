@@ -6,7 +6,7 @@ import {HeroSection} from '../components/Home/HeroSection';
 export default function Home() {
   return (
     <div className="">
-      <MainHeader title="Helen Zeray : Home" />
+      <MainHeader title="Hulu Media Ecommerce : Home" />
       <HeroSection />
     </div>
   )
