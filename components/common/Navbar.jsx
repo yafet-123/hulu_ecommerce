@@ -57,14 +57,14 @@ export const Navbar = () => {
     >
       <div className={` ${ open ? "bg-black bg-opacity-90" :"" } lg:justify-between justify-around px-5 lg:px-10 items-center lg:flex`}>
         <div className="flex items-center justify-between py-3 ">
-          <h1 className={` ${ router.pathname == '/' && !shadow || open ? "text-white" : "text-black" } font-poppins text-xl md:text-2xl font-normal`}>
+          <h1 className={` ${ router.pathname == '/' && !shadow || open ? "text-black" : "text-black" } font-poppins text-xl md:text-2xl font-normal`}>
             Helen Zeray
           </h1>
           <div className="flex items-center lg:hidden">
             <div className="flex flex-row gap-4">
               {socialMediaLinks.map((paths, index) => {
                 return (
-                  <Link key={index} href={paths.id} target="_blank" className={` ${ router.pathname == '/'? "text-white" : "text-black" }`}>
+                  <Link key={index} href={paths.id} target="_blank" className={` ${ router.pathname == '/'? "text-black" : "text-black" }`}>
                     {paths.path}
                   </Link>
                 );
@@ -72,7 +72,7 @@ export const Navbar = () => {
             </div>
             <div className="pl-5">
               <button
-                className={` ${ router.pathname == '/' && !shadow || open ? "text-white" : "text-black" } p-2 rounded-md outline-none focus:border-gray-400 focus:border`}
+                className={` ${ router.pathname == '/' && !shadow || open ? "text-black" : "text-black" } p-2 rounded-md outline-none focus:border-gray-400 focus:border`}
                 onClick={() => setOpen(!open)}
               >
                 {open === true ? ( 
@@ -91,7 +91,7 @@ export const Navbar = () => {
               open ? "flex bg-transparent" : "hidden"
             }`}
           >
-            <ul className={` ${ router.pathname == '/'  && !shadow || open ? "text-white" : "text-black" } items-center font-bold paragraph-fonts justify-center space-y-8 md:flex md:space-x-6 md:space-y-0`}>
+            <ul className={` ${ router.pathname == '/'  && !shadow || open ? "text-black" : "text-black" } items-center font-bold paragraph-fonts justify-center space-y-8 md:flex md:space-x-6 md:space-y-0`}>
               {NavLinks.map((link) => (
                 <li
                   key={link.name}
