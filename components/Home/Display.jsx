@@ -22,13 +22,19 @@ export default function Display({ sale }) {
             {sale.price} <span className="px-1">ETB</span>
           </p>
         </div>
-        <Image
-          src={sale.profile}
-          width={50}
-          height={50}
-          className="w-full !h-full bg-cover bg-center"
-          alt="latest news image"
-        />
+        <div className="flex flex-col items-left font-serif antialiased leading-loose tracking-wide mr-20 w-full lg:w-[75%]">
+          <Image
+            src={sale.profile}
+            width={50}
+            height={50}
+            className="w-full !h-full bg-cover bg-center rounded-full"
+            alt="latest news image"
+          />
+
+          <p className="flex font-poppins text-lg lg:text-xl xs:leading-[27px] leading-[23px] font-normal text-left text-[#505e66] mb-1">
+            {sale.posted}
+          </p>
+        </div>
       </div>
     </Link>
   );
