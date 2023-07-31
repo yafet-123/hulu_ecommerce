@@ -7,7 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
+model Admin{
+  admin_id     Int           @id @default(autoincrement())
+  UserName     String        @unique @db.VarChar(255)
+  email        String?       @unique @db.VarChar(255)
+  resetToken   String?       @unique @db.VarChar(255)
+  Password     String        @db.VarChar(255)
+  role         String?       @db.VarChar(255)
+  CreatedDate  DateTime?     @default(now()) @db.Timestamptz(6)
+  ModifiedDate DateTime?     @default(now()) @db.Timestamptz(6)
+  Items        Items[]
+}
 model User {
   user_id      Int           @id @default(autoincrement())
   UserName     String        @unique @db.VarChar(255)
@@ -17,17 +27,42 @@ model User {
   role         String?       @db.VarChar(255)
   CreatedDate  DateTime?     @default(now()) @db.Timestamptz(6)
   ModifiedDate DateTime?     @default(now()) @db.Timestamptz(6)
-  items        items[]
+  Items        Items[]
 }
 
-model items {
+model Items {
   items_id      Int       @id @default(autoincrement())
   name          String?
+  Description   String?
   price         String?
-  Image         String?
+  Image         String[]
   profile       String?
+  Condition     String?
   CreatedDate   DateTime? @default(now()) @db.Timestamptz(6)
   ModifiedDate  DateTime? @default(now()) @db.Timestamptz(6)
   user_id       Int
   User          User      @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  ItemsCategory ItemsCategory[]
+}
+
+model Category {
+  category_id   Int           @id @default(autoincrement())
+  CategoryName  String        @db.VarChar(255)
+  user_id       Int?
+  CreatedDate   DateTime?     @default(now()) @db.Timestamptz(6)
+  ModifiedDate  DateTime?     @default(now()) @db.Timestamptz(6)
+  User          User?         @relation(fields: [user_id], references: [user_id], onUpdate: NoAction)
+  ItemsCategory ItemsCategory[]
+}
+
+model ItemsCategory {
+  items_category_id   Int       @id @default(autoincrement())
+  user_id             Int?
+  category_id         Int
+  items_id            Int
+  CreatedDate         DateTime? @default(now()) @db.Timestamptz(6)
+  ModifiedDate        DateTime? @default(now()) @db.Timestamptz(6)
+  Category            Category  @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: Cascade)
+  Items               Items     @relation(fields: [items_id], references: [items_id], onDelete: Cascade, onUpdate: Cascade)
+  User                User?     @relation(fields: [user_id], references: [user_id], onUpdate: NoAction)
 }
