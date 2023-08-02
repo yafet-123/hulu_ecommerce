@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router'
+import { useState } from "react";
 
 export default function Display({ sale }) {
+  const [paddingTop, setPaddingTop] = useState("0");
   const router = useRouter()
   const handleClick = (e) => {
     e.preventDefault()
@@ -10,11 +12,15 @@ export default function Display({ sale }) {
   }
   return (
     <Link href="/contact" className="flex flex-col justify-between lg:pb-10">
-      <div className="w-full !h-[25rem] relative mb-5">
+      <div className="w-full !h-[20rem] relative mb-5">
         <Image
           src={sale.Image}
           fill
-          className="w-full !h-full"
+          objectFit="contain"
+          onLoad={({ target }) => {
+            const { naturalWidth, naturalHeight } = target;
+            setPaddingTop(`calc(100% / (${naturalWidth} / ${naturalHeight})`);
+          }}
           alt="latest news image"
         />
       </div>

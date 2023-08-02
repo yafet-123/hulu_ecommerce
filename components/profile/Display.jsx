@@ -1,16 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Display({ sale }) {
-  console.log(sale.Image)
+  const [paddingTop, setPaddingTop] = useState("0");
   return (
     <Link href="/ " className="flex flex-col justify-between lg:pb-10">
       <div className="w-full !h-[20rem] relative mb-5">
         <Image
           src={sale.Image}
           fill
-          className="w-full !h-full bg-cover bg-center"
-          alt="profile image"
+          objectFit="contain"
+          onLoad={({ target }) => {
+            const { naturalWidth, naturalHeight } = target;
+            setPaddingTop(`calc(100% / (${naturalWidth} / ${naturalHeight})`);
+          }}
+          alt="latest news image"
         />
       </div>
       <div className="flex justify-between w-full px-5">
