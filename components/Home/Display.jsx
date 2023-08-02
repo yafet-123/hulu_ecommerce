@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 
 export default function Display({ sale }) {
-  console.log(sale.Image)
+  const router = useRouter()
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push('/profile')
+  }
   return (
     <Link href="/contact" className="flex flex-col justify-between lg:pb-10">
       <div className="w-full !h-[20rem] relative mb-5">
@@ -22,20 +27,20 @@ export default function Display({ sale }) {
             {sale.price} <span className="px-1">ETB</span>
           </p>
         </div>
-        <Link href="/profile" className="flex flex-col items-center mr-5">
+        <button onClick={handleClick} className="flex flex-col items-center mr-5">
           <Image
             src={sale.profile}
             alt="Item images"
             priority
-            width={25}
-            height={25}
-            className="h-[25px] bg-cover rounded-full"
+            width={40}
+            height={40}
+            className="h-[40px] bg-cover rounded-full"
           />
 
           <p className="flex font-poppins text-md lg:text-lg font-normal text-left text-[#505e66] my-2 w-full mr-5">
             {sale.posted}
           </p>
-        </Link>
+        </button>
       </div>
     </Link>
   );

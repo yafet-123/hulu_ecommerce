@@ -7,7 +7,7 @@ import {
   BsInstagram,
   BsTwitter,
 } from "react-icons/bs";
-// import axios from 'axios';
+import axios from 'axios';
 import Link from "next/link";
 import ReactModal from "react-modal";
 import { usePathname, useRouter } from "next/router";
@@ -67,22 +67,22 @@ export const ContactForm = () => {
   ];
   const handleSubmit = async (values) => {
     console.log(values);
-    // try {
-    //   const data = await axios.post(`../api/SentMail`,{
-    //     "name": values.name,
-    //     "email": values.email,
-    //     "phone": values.phone,
-    //     "message": values.message
-    //   }).then(function (response) {
-    //     console.log(response.data);
-    //     setModalIsOpen(true);
-    //   }).catch(function (error) {
-    //     setModalIsOpenone(true);
-    //     setLoading(false)
-    //   });
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
+    try {
+      const data = await axios.post(`../api/SentMail`,{
+        "name": values.name,
+        "email": values.email,
+        "phone": values.phone,
+        "message": values.message
+      }).then(function (response) {
+        console.log(response.data);
+        setModalIsOpen(true);
+      }).catch(function (error) {
+        setModalIsOpenone(true);
+        setLoading(false)
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const closeModal = () => {
