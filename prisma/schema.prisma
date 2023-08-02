@@ -16,18 +16,20 @@ model Admin{
   role         String?       @db.VarChar(255)
   CreatedDate  DateTime?     @default(now()) @db.Timestamptz(6)
   ModifiedDate DateTime?     @default(now()) @db.Timestamptz(6)
-  Items        Items[]
 }
 model User {
-  user_id      Int           @id @default(autoincrement())
-  UserName     String        @unique @db.VarChar(255)
-  email        String?       @unique @db.VarChar(255)
-  resetToken   String?       @unique @db.VarChar(255)
-  Password     String        @db.VarChar(255)
-  role         String?       @db.VarChar(255)
-  CreatedDate  DateTime?     @default(now()) @db.Timestamptz(6)
-  ModifiedDate DateTime?     @default(now()) @db.Timestamptz(6)
-  Items        Items[]
+  user_id       Int           @id @default(autoincrement())
+  UserName      String        @unique @db.VarChar(255)
+  phonenumber   String        @unique @db.VarChar(255)
+  email         String?       @unique @db.VarChar(255)
+  resetToken    String?       @unique @db.VarChar(255)
+  Password      String        @db.VarChar(255)
+  role          String?       @db.VarChar(255)
+  CreatedDate   DateTime?     @default(now()) @db.Timestamptz(6)
+  ModifiedDate  DateTime?     @default(now()) @db.Timestamptz(6)
+  Items         Items[]
+  Category      Category[]
+  ItemsCategory ItemsCategory[]
 }
 
 model Items {
