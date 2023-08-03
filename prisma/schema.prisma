@@ -50,6 +50,7 @@ model Items {
 model Category {
   category_id   Int           @id @default(autoincrement())
   CategoryName  String        @db.VarChar(255)
+  SuperCategory String        @db.VarChar(255)
   user_id       Int?
   CreatedDate   DateTime?     @default(now()) @db.Timestamptz(6)
   ModifiedDate  DateTime?     @default(now()) @db.Timestamptz(6)
