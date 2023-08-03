@@ -36,7 +36,48 @@ export default function ListCategories() {
       "id":7,
       "type":"Electronics",
       "name":"Computers & Accessories"
+    },
+    {
+      "id":8,
+      "type":"Electronics",
+      "name":"camera & photos"
+    },
+    {
+      "id":9,
+      "type":"Electronics",
+      "name":"Home Electronics"
+    },
+    {
+      "id":10,
+      "type":"Electronics",
+      "name":"Office Electronics"
+    },
+    {
+      "id":11,
+      "type":"Electronics",
+      "name":"Car Electronics"
+    },
+    {
+      "id":12,
+      "type":"Electronics",
+      "name":"Video game console & Accessories"
+    },
+    {
+      "id":13,
+      "type":"Electronics",
+      "name":"security & surveillance"
+    },
+    {
+      "id":14,
+      "type":"Electronics",
+      "name":"portable Video & audio"
+    },
+    {
+      "id":15,
+      "type":"Shoes , clothes and accessories",
+      "name":"Bags & Luggages"
     }
+
   ]
 
   const shoes = [];
@@ -50,13 +91,18 @@ export default function ListCategories() {
   }
   return (
     <div className="flex flex-col px-5">
-      {shoes.map((data, index) => (
-        <Display key={index} categorie={data} />
-      ))}
-
-      {electronics.map((data, index) => (
-        <Display key={index} categorie={data} />
-      ))}
+      <h1>Shoes , clothes and accessories</h1>
+      <div className="pl-5">
+        {shoes.map((data, index) => (
+          <Display key={index} categorie={data} />
+        ))}
+      </div>
+      <h1>Electronics</h1>
+      <div className="pl-5">
+        {electronics.map((data, index) => (
+          <Display key={index} categorie={data} />
+        ))}
+      </div>
     </div>
   );
 }
