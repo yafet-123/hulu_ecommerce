@@ -45,7 +45,7 @@ export default function List() {
     }
   ]
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5 h-full">
       {Sales.map((data, index) => (
         <Display key={index} sale={data} />
       ))}

@@ -1,5 +1,5 @@
 import Display from './Display'
-
+import Link from 'next/link'
 export default function ListCategories() {
   const Categories = [
     {
@@ -179,36 +179,36 @@ export default function ListCategories() {
     }
   }
   return (
-    <div className="flex flex-col px-5">
-      <Link href="/ " className="pb-5 lg:pb-10">
-        <h1 className="">{categorie.name}</h1>
-      </Link>
-      <h1 className="text-black text-left font-poppins font-semibold text-md lg:text-lg text-[#D0DFFF]">Shoes , clothes and accessories</h1>
-      <div className="pl-5">
+    <div className="grid grid-cols-2 lg:grid-cols-1 gap-5 px-5">    
+      <div>
+        <Link href="/ ">
+          <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-xl text-[#D0DFFF] pb-5">Any</h1>
+        </Link>
+        <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-xl text-[#D0DFFF] pb-5">Shoes , clothes and accessories</h1>
         {shoes.map((data, index) => (
           <Display key={index} categorie={data} />
         ))}
       </div>
-      <h1 className="text-black text-left font-poppins font-semibold text-md lg:text-lg text-[#D0DFFF]">Electronics</h1>
-      <div className="pl-5">
+      <div>
+        <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-xl text-[#D0DFFF] pb-5">Electronics</h1>
         {electronics.map((data, index) => (
           <Display key={index} categorie={data} />
         ))}
       </div>
-      <h1 className="text-black text-left font-poppins font-semibold text-md lg:text-lg text-[#D0DFFF]">Health & Beauty</h1>
-      <div className="pl-5">
+      <div>
+        <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-xl text-[#D0DFFF] pb-5">Health & Beauty</h1>
         {healthbeauty.map((data, index) => (
           <Display key={index} categorie={data} />
         ))}
       </div>
-      <h1 className="text-black text-left font-poppins font-semibold text-md lg:text-lg text-[#D0DFFF]">Baby & kids</h1>
-      <div className="pl-5">
+      <div>
+        <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-xl text-[#D0DFFF] pb-5">Baby & kids</h1>
         {babykids.map((data, index) => (
           <Display key={index} categorie={data} />
         ))}
       </div>
-      <h1 className="text-black text-left font-poppins font-semibold text-md lg:text-lg text-[#D0DFFF]">Home & kitchen</h1>
-      <div className="pl-5">
+      <div>
+        <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-xl text-[#D0DFFF] pb-5">Home & kitchen</h1>
         {homekitchen.map((data, index) => (
           <Display key={index} categorie={data} />
         ))}

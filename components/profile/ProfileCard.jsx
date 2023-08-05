@@ -10,6 +10,7 @@ export default function ProfileCard() {
           width={200}
           height={200}
           className="h-[200px] bg-cover rounded-full"
+          alt="profile image"
         />
         <p className="font-poppins text-xl lg:text-3xl font-normal text-center text-[#505e66] my-5 w-full">
           Yafet Addisu

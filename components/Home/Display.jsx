@@ -12,7 +12,7 @@ export default function Display({ sale }) {
   }
   return (
     <Link href="/contact" className="flex flex-col justify-between lg:pb-10">
-      <div className="w-full !h-[20rem] relative mb-5">
+      <div className="w-full !h-[15rem] relative mb-5">
         <Image
           src={sale.Image}
           fill
