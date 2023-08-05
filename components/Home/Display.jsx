@@ -11,7 +11,7 @@ export default function Display({ sale }) {
     router.push('/profile')
   }
   return (
-    <Link href="/contact" className="flex flex-col justify-between lg:pb-10">
+    <Link href="/Item/Display" className="flex flex-col justify-between lg:pb-10">
       <div className="w-full !h-[15rem] relative mb-5">
         <Image
           src={sale.Image}
