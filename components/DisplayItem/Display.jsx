@@ -30,13 +30,20 @@ export default function Display() {
         <p className="flex font-poppins font-semibold text-lg lg:text-2xl font-normal text-left text-[#505e66] my-3">
           30000 <span className="px-1">ETB</span>
         </p>
-        <div>
+        <div className="flex flex-col mb-5">
           <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-2xl pb-5">Seller</h1>
           <h1 className="text-black text-left font-poppins font-normal text-lg lg:text-xl pb-5 pl-5">
             Yafet Addisu
           </h1>
           <p className="text-black flex font-poppins font-normal text-lg lg:text-xl font-normal text-left pl-5">
             +251934781038
+          </p>
+        </div>
+
+        <div className="flex flex-col">
+          <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-2xl pb-5">Descreption</h1>
+          <p className="text-black flex font-poppins font-normal text-lg lg:text-xl font-normal text-left pl-5">
+            yafet is addisu is my name
           </p>
         </div>
       </div>
