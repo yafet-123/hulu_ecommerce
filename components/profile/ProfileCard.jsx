@@ -12,8 +12,14 @@ export default function ProfileCard() {
           className="h-[200px] bg-cover rounded-full"
           alt="profile image"
         />
-        <p className="font-poppins text-xl lg:text-3xl font-normal text-center text-[#505e66] my-5 w-full">
+        <p className="font-poppins text-xl lg:text-3xl font-normal text-center text-[#505e66] mt-5 w-full">
           Yafet Addisu
+        </p>
+        <p className="font-poppins text-lg lg:text-xl font-normal text-center text-[#505e66] mt-2 w-full">
+          +251934781038
+        </p>
+        <p className="font-poppins text-lg lg:text-xl font-normal text-center text-[#505e66] mt-2 w-full">
+          yafetaddisu123@gmail.com
         </p>
     </div>
   );

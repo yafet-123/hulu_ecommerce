@@ -80,6 +80,14 @@ export const Navbar = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  type='button'
+                  className='w-full black_btn'
+                >
+                  Sign Out
+                </button>
+              </li>
             </ul>
           </div>
         </div>
