@@ -55,20 +55,22 @@ import { MainHeader } from '../../components/common/MainHeader';
 
 export default function Admin(){
   
-
+  const data = {
+    "name":"yafet"
+  }
   function handleChange(newValue) {
       setselected(newValue);
   }
   // if (status === "authenticated")
 
     return (
-      <main className="w-full h-full px-2 lg:px-10 py-32 bg-white flex flex-col">
-        <MainHeader title="Hulu Media Ecommerce : Contact" />
-        <div className="flex bg-[#e6e6e6] dark:bg-[#02201D] pt-10">
+      <main className="w-full h-full px-2 lg:px-10 bg-white flex flex-col">
+        <MainHeader title="Hulu Media Ecommerce : Admin" />
+        <div className="flex pt-10">
           <VerticalNavbar onChange={handleChange} data={data} />
-          // <div className="w-full">
-          //   <DashBoard categories={categories} />
-          // </div>
+          <div className="w-full">
+            <DashBoard />
+          </div>
         </div>
       </main>
     );

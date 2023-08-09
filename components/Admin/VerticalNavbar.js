@@ -44,7 +44,7 @@ export function VerticalNavbar({onChange, data}){
 
 	return(
             <div className={`flex h-full sticky top-0 bottom-0 ${sideBar ? "w-16 lg:w-28" : "w-16 lg:w-96"} pt-24`}>
-                <nav className="w-full h-screen flex flex-col py-8 lg:px-4 bg-[#e6e6e6] dark:bg-[#02201D] scroll_width">
+                <nav className="w-full h-screen flex flex-col py-8 lg:px-4 scroll_width">
                     <div className="flex justify-between ml-2 lg:ml-5">
                         <h1 className={`text-2xl font-bold text-black dark:text-white ${sideBar ? "hidden" : "hidden lg:flex"}`}>Admin Page</h1>
                         <button 
@@ -78,10 +78,10 @@ export function VerticalNavbar({onChange, data}){
                     </div>
                     <div className="mt-auto flex flex-col">
                         <Link href="/">
-                            <a className="flex items-center p-2 lg:p-4 text-xl text-black hover:text-white dark:text-white hover:bg-[#009688] dark:hover:bg-white dark:hover:text-slate-800 rounded-xl hover:bg-white rounded-xl">
+                            <p className="flex items-center p-2 lg:p-4 text-xl text-black hover:text-white dark:text-white hover:bg-[#009688] dark:hover:bg-white dark:hover:text-slate-800 rounded-xl hover:bg-white rounded-xl">
                                 <span className="hidden lg:flex"><AiOutlineUser size={25} /> </span>
-                                <span className={`ml-1 lg:ml-4 text-xs lg:text-lg font-semibold ${sideBar ? "hidden" : "flex"} `}>{data?.user.name}</span>
-                            </a>
+                                <span className={`ml-1 lg:ml-4 text-xs lg:text-lg font-semibold ${sideBar ? "hidden" : "flex"} `}>{data?.name}</span>
+                            </p>
                         </Link>
 
                         
