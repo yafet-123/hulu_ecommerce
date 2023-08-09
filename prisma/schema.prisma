@@ -6,7 +6,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
+ 
 model Admin{
   admin_id     Int           @id @default(autoincrement())
   UserName     String        @unique @db.VarChar(255)

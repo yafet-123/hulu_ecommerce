@@ -54,9 +54,22 @@ export const Navbar = () => {
     >
       <div className={` ${ open ? "bg-black bg-opacity-90" :"" } lg:justify-between justify-around px-5 lg:px-10 items-center lg:flex`}>
         <div className="flex items-center justify-between py-3 ">
-          <h1 className={` ${ router.pathname == '/' && !shadow || open ? "text-black" : "text-black" } font-poppins text-xl md:text-2xl font-normal`}>
+          <h1 className={` ${ shadow || open ? "text-white" : "text-black" } font-poppins text-xl md:text-2xl font-normal`}>
             Hulu Commerce
           </h1>
+
+          <div className="pl-5 lg:hidden">
+            <button
+              className={` ${ shadow || open ? "text-white" : "text-black" } p-2 rounded-md outline-none focus:border-gray-400 focus:border `}
+              onClick={() => setOpen(!open)}
+            >
+              {open === true ? ( 
+                <AiOutlineClose size={35} />
+              ) : (
+                <AiOutlineMenu size={35} />
+              )}
+            </button>
+          </div>
         </div>
 
         <div className="">
@@ -65,7 +78,7 @@ export const Navbar = () => {
               open ? "flex bg-transparent" : "hidden"
             }`}
           >
-            <ul className={` ${ router.pathname == '/'  && !shadow || open ? "text-black" : "text-black" } items-center font-bold paragraph-fonts justify-center space-y-8 md:flex md:space-x-6 md:space-y-0`}>
+            <ul className={` ${ shadow || open ? "text-white" : "text-black" } items-center font-bold paragraph-fonts justify-center space-y-8 md:flex md:space-x-6 md:space-y-0`}>
               {NavLinks.map((link) => (
                 <li
                   key={link.name}
