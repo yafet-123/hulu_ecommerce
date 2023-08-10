@@ -44,14 +44,18 @@ const validateForm = (values) => {
     errors.phone = "Phone is required";
   }
 
-  if (!values.message) {
-    errors.message = "Message is required";
+  if (!values.ConfirmPassword) {
+    errors.ConfirmPassword = "Confirm Password is required";
+  }
+
+  if(!values.Password){
+    errors.Password = "Password is required"
   }
 
   return errors;
 };
 
-export const Form = () => {
+export const UserForm = () => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
@@ -95,33 +99,7 @@ export const Form = () => {
     setModalIsOpenone(false);
   };
   return (
-    <div className="w-full flex flex-col md:flex-row items-center space-y-6">
-      <div className="flex flex-col px-2 lg:px-10 w-full">
-        <h1 className="font-poppins font-bold text-4xl lg:tetx-6xl text-left text-[#010101] mb-5">
-          Contact
-        </h1>
-        <div className="font-poppins text-left text-[#010101]">
-          <p className="font-normal text-xl lg:text-2xl mb-5">
-            hulumedia@gmail.com{" "}
-          </p>
-          <p className="font-normal text-xl lg:text-2xl mb-5">
-            Ferensay Legasiyon
-          </p>
-          <p className="font-normal text-xl lg:text-2xl mb-5">
-            WhatsApp: +251934781038
-          </p>
-        </div>
-
-        <div className="flex gap-4">
-          {socialMediaLinks.map((paths, index) => {
-            return (
-              <Link key={index} href={paths.id} target="_blank">
-                {paths.path}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
+    <div className="w-full grid grid-cols-10 gap-4 bg-[#8C34E8]">
       <Formik
         initialValues={initialValues}
         validate={validateForm}
@@ -129,7 +107,7 @@ export const Form = () => {
       >
         {({ handleSubmit }) => (
           <form
-            className="flex flex-col px-2 lg:px-10 w-full"
+            className="col-start-4 col-span-4 w-full bg-white border rounded-md p-5"
             onSubmit={handleSubmit}
           >
             <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
@@ -191,36 +169,36 @@ export const Form = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="phone" className="block mb-1">
+              <label htmlFor="Password" className="block mb-1">
                 Password:
                 <span className="text-gray-500 text-sm ml-1">(required)</span>
               </label>
               <Field
                 type="text"
-                id="phone"
-                name="phone"
+                id="Password"
+                name="Password"
                 className="w-full p-2 text-black border border-gray-300"
               />
               <ErrorMessage
-                name="phone"
+                name="Password"
                 component="div"
                 className="text-red-500"
               />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="phone" className="block mb-1">
-                Phone:
+              <label htmlFor="ConfirmPassword" className="block mb-1">
+                Confirm Password:
                 <span className="text-gray-500 text-sm ml-1">(required)</span>
               </label>
               <Field
                 type="text"
-                id="phone"
-                name="phone"
+                id="ConfirmPassword"
+                name="ConfirmPassword"
                 className="w-full p-2 text-black border border-gray-300"
               />
               <ErrorMessage
-                name="phone"
+                name="ConfirmPassword"
                 component="div"
                 className="text-red-500"
               />
