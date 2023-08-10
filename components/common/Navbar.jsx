@@ -42,7 +42,7 @@ export const Navbar = () => {
   }, []);
 
   const SignIn = () => {
-    router.push("/contact");
+    router.push("/CreateUser");
   };
 
 
