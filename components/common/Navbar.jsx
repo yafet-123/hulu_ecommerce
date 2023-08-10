@@ -41,9 +41,11 @@ export const Navbar = () => {
     setOpen(false);
   }, []);
 
-  const handleTryNowButton = () => {
+  const SignIn = () => {
     router.push("/contact");
   };
+
+
 
   return (
     <nav 
@@ -97,6 +99,7 @@ export const Navbar = () => {
                 <button
                   type='button'
                   className='w-full black_btn'
+                  onClick={()=> SignIn()}
                 >
                   Sign In
                 </button>
