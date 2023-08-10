@@ -104,7 +104,7 @@ export const Navbar = () => {
               <li>
                 <button
                   type='button'
-                  className='w-full black_btn'
+                  className='w-full outline_btn'
                 >
                   Login
                 </button>
