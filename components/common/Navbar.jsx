@@ -98,7 +98,15 @@ export const Navbar = () => {
                   type='button'
                   className='w-full black_btn'
                 >
-                  Sign Out
+                  Sign In
+                </button>
+              </li>
+              <li>
+                <button
+                  type='button'
+                  className='w-full black_btn'
+                >
+                  Login
                 </button>
               </li>
             </ul>
