@@ -16,7 +16,7 @@ import { BsDisplay, BsFunnelFill } from 'react-icons/bs'
 export function VerticalNavbar({onChange, data}){
     const SideBarList = [
         { link: "/Admin", icon: <AiFillDashboard size={25}/>, name: "Dashboard",},
-        { link: "/Admin/User", icon: <AiOutlineUser size={25}/>, name: "User",},
+        { link: "/Admin/User", icon: <AiOutlineUser size={25}/>, name: "User",}
     ];
 	const router = useRouter();
     const [sideBar , setsideBar] = useState(false);
