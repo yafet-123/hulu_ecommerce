@@ -38,6 +38,7 @@ export default function Display() {
         <div className="flex flex-wrap flex-row ">
           {Images.map((data, index) => (
             <Image
+              key={index}
               src={data}
               width={100}
               height={100}
