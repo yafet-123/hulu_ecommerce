@@ -133,12 +133,12 @@ export const Form = () => {
             onSubmit={handleSubmit}
           >
             <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
-              Enquiry form
+              Sign In
             </h3>
 
             <div className="mb-4">
               <label htmlFor="name" className="block mb-1">
-                Name:
+                UserName:
                 <span className="text-gray-500 text-sm ml-1">(required)</span>
               </label>
               <Field
@@ -191,18 +191,36 @@ export const Form = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="message" className="block mb-1">
-                Message:
+              <label htmlFor="phone" className="block mb-1">
+                Password:
                 <span className="text-gray-500 text-sm ml-1">(required)</span>
               </label>
               <Field
-                as="textarea"
-                id="message"
-                name="message"
+                type="text"
+                id="phone"
+                name="phone"
                 className="w-full p-2 text-black border border-gray-300"
               />
               <ErrorMessage
-                name="message"
+                name="phone"
+                component="div"
+                className="text-red-500"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="phone" className="block mb-1">
+                Phone:
+                <span className="text-gray-500 text-sm ml-1">(required)</span>
+              </label>
+              <Field
+                type="text"
+                id="phone"
+                name="phone"
+                className="w-full p-2 text-black border border-gray-300"
+              />
+              <ErrorMessage
+                name="phone"
                 component="div"
                 className="text-red-500"
               />
