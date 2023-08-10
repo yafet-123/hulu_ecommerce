@@ -17,22 +17,6 @@ export function VerticalNavbar({onChange, data}){
     const SideBarList = [
         { link: "/Admin", icon: <AiFillDashboard size={25}/>, name: "Dashboard",},
         { link: "/Admin/User", icon: <AiOutlineUser size={25}/>, name: "User",},
-        { link: "/Admin/JobAdd", icon: <AiOutlineFolderAdd size={25}/>, name: "Add Job" },
-        { link: "/Admin/JobDisplay", icon: <BsDisplay size={25}/>, name: "Display Job" },
-        { link: "/Admin/Category", icon: <MdOutlineCategory size={25}/>, name: "Category" },
-        { link: "/Admin/Location", icon: <MdLocationOn size={25}/>, name: "Location" },
-        { link: "/Admin/NewsCategory", icon: <BiNews size={25}/>, name: "News Category" },
-        { link: "/Admin/News", icon: <GiNewspaper size={25}/>, name: "News" },
-        { link: "/Admin/EntertainmentCategory", icon: <BsNewspaper size={25}/>, name: "Entertainment Category" },
-        { link: "/Admin/Entertainment", icon: <BsFunnelFill size={25}/>, name: "Entertainment" },
-        { link: "/Admin/HTmlCourse", icon: <AiOutlineHtml5 size={25}/>, name: "HTML Course" },
-        { link: "/Admin/CSSCourse", icon: <SiCss3 size={25}/>, name: "CSS Course" },
-        { link: "/Admin/JavascriptCourses", icon: <DiJavascript1 size={25}/>, name: "JavaScript Course" },
-        { link: "/Admin/PythonCourses", icon: <DiPython size={25}/>, name: "Python Course" },
-        { link: "/Admin/BlogsCategory", icon: <FaBlog size={25}/>, name: "Blogs Category" },
-        { link: "/Admin/Blogs", icon: <FaBlogger size={25}/>, name: "Blogs" },
-        { link: "/Admin/AiSearchCategory", icon: <GiArtificialHive size={25}/>, name: "AiSearch Category" },
-        { link: "/Admin/AiSearch", icon: <GiArtificialIntelligence size={25}/>, name: "AiSearch" },
     ];
 	const router = useRouter();
     const [sideBar , setsideBar] = useState(false);
