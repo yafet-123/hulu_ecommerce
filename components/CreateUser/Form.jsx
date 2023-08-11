@@ -99,7 +99,7 @@ export const UserForm = () => {
     setModalIsOpenone(false);
   };
   return (
-    <div className="w-full grid grid-cols-10 gap-4 bg-[#8C34E8]">
+    <div className="w-full h-full grid grid-cols-10 gap-4 bg-[#8C34E8]">
       <Formik
         initialValues={initialValues}
         validate={validateForm}
