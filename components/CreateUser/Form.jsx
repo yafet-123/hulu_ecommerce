@@ -99,7 +99,7 @@ export const UserForm = () => {
     setModalIsOpenone(false);
   };
   return (
-    <div className="w-full h-full grid grid-cols-10 gap-4 bg-[#8C34E8]">
+    <div>
       <Formik
         initialValues={initialValues}
         validate={validateForm}
@@ -107,110 +107,114 @@ export const UserForm = () => {
       >
         {({ handleSubmit }) => (
           <form
-            className="col-start-4 col-span-4 w-full bg-white border rounded-md p-5"
+            className=""
             onSubmit={handleSubmit}
           >
-            <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
-              Sign In
-            </h3>
+            <div className="grid grid-cols-10 center min-h-screen py-2 shadow-lg">
+              <div className="col-start-4 col-span-4 shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white">
+                <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
+                  Sign In
+                </h3>
 
-            <div className="mb-4">
-              <label htmlFor="name" className="block mb-1">
-                UserName:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="name"
-                id="name"
-                name="name"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="name"
-                component="div"
-                className="text-red-500"
-              />
+                <div className="mb-4">
+                  <label htmlFor="name" className="block mb-1">
+                    UserName:
+                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                  </label>
+                  <Field
+                    type="name"
+                    id="name"
+                    name="name"
+                    className="w-full p-2 text-black border border-gray-300"
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="text-red-500"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="email" className="block mb-1">
+                    Email:
+                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                  </label>
+                  <Field
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="w-full p-2 text-black border border-gray-300"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-red-500"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="phone" className="block mb-1">
+                    Phone:
+                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                  </label>
+                  <Field
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    className="w-full p-2 text-black border border-gray-300"
+                  />
+                  <ErrorMessage
+                    name="phone"
+                    component="div"
+                    className="text-red-500"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="Password" className="block mb-1">
+                    Password:
+                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                  </label>
+                  <Field
+                    type="text"
+                    id="Password"
+                    name="Password"
+                    className="w-full p-2 text-black border border-gray-300"
+                  />
+                  <ErrorMessage
+                    name="Password"
+                    component="div"
+                    className="text-red-500"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="ConfirmPassword" className="block mb-1">
+                    Confirm Password:
+                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                  </label>
+                  <Field
+                    type="text"
+                    id="ConfirmPassword"
+                    name="ConfirmPassword"
+                    className="w-full p-2 text-black border border-gray-300"
+                  />
+                  <ErrorMessage
+                    name="ConfirmPassword"
+                    component="div"
+                    className="text-red-500"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-[#17c294] w-28 text-white paragraph-fonts py-2 px-4 mb-8 md:mb-0 md:py-4 md:px-8
+                               shadow-black items-center rounded-md justify-center shadow-md hover:scale-105 duration-300"
+                >
+                  Submit
+                </button>
+              </div>
             </div>
-
-            <div className="mb-4">
-              <label htmlFor="email" className="block mb-1">
-                Email:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="email"
-                id="email"
-                name="email"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="phone" className="block mb-1">
-                Phone:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="text"
-                id="phone"
-                name="phone"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="phone"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="Password" className="block mb-1">
-                Password:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="text"
-                id="Password"
-                name="Password"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="Password"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="ConfirmPassword" className="block mb-1">
-                Confirm Password:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="text"
-                id="ConfirmPassword"
-                name="ConfirmPassword"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="ConfirmPassword"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="bg-[#17c294] w-28 text-white paragraph-fonts py-2 px-4 mb-8 md:mb-0 md:py-4 md:px-8
-                           shadow-black items-center rounded-md justify-center shadow-md hover:scale-105 duration-300"
-            >
-              Submit
-            </button>
           </form>
         )}
       </Formik>

@@ -45,6 +45,10 @@ export const Navbar = () => {
     router.push("/CreateUser");
   };
 
+  const Login = () => {
+    router.push("/login");
+  };
+
 
 
   return (
@@ -108,6 +112,7 @@ export const Navbar = () => {
                 <button
                   type='button'
                   className='w-full outline_btn'
+                  onClick={()=> Login()}
                 >
                   Login
                 </button>
