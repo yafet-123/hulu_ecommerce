@@ -80,8 +80,8 @@ export function LoginForm({ csrfToken }) {
                                     </div>
                                 </div>
 
-                                <Link href="/Forgotpassword" className="font-bold flex justify-end text-lg lg:text-xl text-red-600 mb-5" >
-                                    forgot password?
+                                <Link href="/forgotPassword" className="font-bold flex justify-end text-lg lg:text-xl text-red-600 mb-5" >
+                                    Forgot Password?
                                 </Link>
 
                                 <div className="flex items-center justify-center">
