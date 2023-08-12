@@ -102,7 +102,7 @@ export const Navbar = () => {
               <li>
                 <button
                   type='button'
-                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#07b384] border-black bg-[#17c294] rounded-xl px-4 py-1'
+                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#013627] border-black bg-[#17c294] rounded-xl px-4 py-1'
                   onClick={()=> SignIn()}
                 >
                   Sign In
@@ -111,7 +111,7 @@ export const Navbar = () => {
               <li>
                 <button
                   type='button'
-                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#5f06bd] border-white bg-[#8C34E8] rounded-xl px-4 py-1'
+                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#26024d] border-white bg-[#8C34E8] rounded-xl px-4 py-1'
                   onClick={()=> Login()}
                 >
                   Login
