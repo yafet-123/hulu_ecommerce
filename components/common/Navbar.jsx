@@ -102,7 +102,7 @@ export const Navbar = () => {
               <li>
                 <button
                   type='button'
-                  className='w-full'
+                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-black hover:bg-white border-black bg-black rounded-xl px-4 py-1'
                   onClick={()=> SignIn()}
                 >
                   Sign In
@@ -111,7 +111,7 @@ export const Navbar = () => {
               <li>
                 <button
                   type='button'
-                  className='w-full outline_btn'
+                  className='md:my-0 my-7 text-black text-lg md:text-xl cursor-pointer hover:text-white hover:bg-black border-white bg-white rounded-xl px-4 py-1'
                   onClick={()=> Login()}
                 >
                   Login
