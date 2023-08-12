@@ -42,20 +42,20 @@ export function LoginForm({ csrfToken }) {
                     {(formik) => (
                       <form onSubmit={formik.handleSubmit}>
                         <div className="flex flex-col items-center justify-center min-h-screen py-2 shadow-lg">
-                            <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                            <div className="bg-[#8C34E8] shadow-md rounded px-8 pt-6 pb-8 mb-4">
                                 <input name="csrfToken" type="hidden" defaultValue={csrfToken}/>
                                 <div className="text-red-400 text-md text-center rounded p-2">
                                     {error}
                                 </div>
                                 <div className="mb-4">
-                                    <label htmlFor="username" className="uppercase text-sm text-gray-600 font-bold">
+                                    <label htmlFor="username" className="uppercase text-sm text-white font-bold">
                                         User Name
                                         <Field
                                             name="username"
                                             aria-label="enter your username"
                                             aria-required="true"
                                             type="text"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3"
+                                            className="w-full bg-white text-gray-900 mt-2 p-3"
                                         />
                                     </label>
 
@@ -64,14 +64,14 @@ export function LoginForm({ csrfToken }) {
                                     </div>
                                 </div>
                                 <div className="mb-6">
-                                    <label htmlFor="password" className="uppercase text-sm text-gray-600 font-bold">
+                                    <label htmlFor="password" className="uppercase text-sm text-white font-bold">
                                         password
                                         <Field
                                             name="password"
                                             aria-label="enter your password"
                                             aria-required="true"
                                             type="password"
-                                            className="w-full bg-gray-300 text-gray-900 mt-2 p-3"
+                                            className="w-full bg-white text-gray-900 mt-2 p-3"
                                         />
                                     </label>
 
@@ -80,7 +80,7 @@ export function LoginForm({ csrfToken }) {
                                     </div>
                                 </div>
 
-                                <Link href="/forgotPassword" className="font-bold flex justify-end text-lg lg:text-xl text-red-600 mb-5" >
+                                <Link href="/forgotPassword" className="font-bold flex justify-end text-lg lg:text-xl text-white mb-5" >
                                     Forgot Password?
                                 </Link>
 

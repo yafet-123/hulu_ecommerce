@@ -60,13 +60,13 @@ export const Navbar = () => {
     >
       <div className={` ${ open ? "bg-black bg-opacity-90" :"" } lg:justify-between justify-around px-5 lg:px-10 items-center lg:flex`}>
         <div className="flex items-center justify-between py-3 ">
-          <h1 className={` ${ router.pathname == "/CreateUser" || router.pathname == "/forgotPassword" || router.pathname == "/login" ||shadow || open ? "text-white" : "text-black" } font-poppins text-xl md:text-2xl font-normal`}>
+          <h1 className={` ${ router.pathname == "/forgotPassword" ||shadow || open ? "text-white" : "text-black" } font-poppins text-xl md:text-2xl font-normal`}>
             Hulu Commerce
           </h1>
 
           <div className="pl-5 lg:hidden">
             <button
-              className={` ${ router.pathname == "/CreateUser" || router.pathname == "/forgotPassword" || router.pathname == "/login" || shadow || open ? "text-white" : "text-black" } p-2 rounded-md outline-none focus:border-gray-400 focus:border `}
+              className={` ${ router.pathname == "/forgotPassword" || shadow || open ? "text-white" : "text-black" } p-2 rounded-md outline-none focus:border-gray-400 focus:border `}
               onClick={() => setOpen(!open)}
             >
               {open === true ? ( 
@@ -84,7 +84,7 @@ export const Navbar = () => {
               open ? "flex bg-transparent" : "hidden"
             }`}
           >
-            <ul className={` ${ router.pathname == "/CreateUser" || router.pathname == "/forgotPassword" || router.pathname == "/login" || shadow || open ? "text-white" : "text-black" } items-center font-bold paragraph-fonts justify-center space-y-8 md:flex md:space-x-6 md:space-y-0`}>
+            <ul className={` ${ router.pathname == "/forgotPassword" || shadow || open ? "text-white" : "text-black" } items-center font-bold paragraph-fonts justify-center space-y-8 md:flex md:space-x-6 md:space-y-0`}>
               {NavLinks.map((link) => (
                 <li
                   key={link.name}
@@ -102,7 +102,7 @@ export const Navbar = () => {
               <li>
                 <button
                   type='button'
-                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-black hover:bg-white border-black bg-black rounded-xl px-4 py-1'
+                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#8C34E8] border-black bg-[#17c294] rounded-xl px-4 py-1'
                   onClick={()=> SignIn()}
                 >
                   Sign In
@@ -111,7 +111,7 @@ export const Navbar = () => {
               <li>
                 <button
                   type='button'
-                  className='md:my-0 my-7 text-black text-lg md:text-xl cursor-pointer hover:text-white hover:bg-black border-white bg-white rounded-xl px-4 py-1'
+                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#17c294] border-white bg-[#8C34E8] rounded-xl px-4 py-1'
                   onClick={()=> Login()}
                 >
                   Login

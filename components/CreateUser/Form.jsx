@@ -109,17 +109,17 @@ export const UserForm = () => {
           <form
             className=""
             onSubmit={handleSubmit}
-          >
-            <div className="grid grid-cols-10 center min-h-screen py-2 shadow-lg">
-              <div className="col-start-4 col-span-4 shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white">
-                <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
+          > 
+            <div className="grid grid-cols-10 center py-2 shadow-lg">
+              <div className="col-start-4 col-span-4 px-8 pt-6 pb-8 mb-4 bg-[#8C34E8]">
+                <h3 className="font-poppins text-left text-white font-bold text-4xl lg:tetx-6xl mb-5">
                   Sign In
                 </h3>
 
                 <div className="mb-4">
-                  <label htmlFor="name" className="block mb-1">
+                  <label htmlFor="name" className="block mb-1 text-white">
                     UserName:
-                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                    <span className="text-white text-sm ml-1">(required)</span>
                   </label>
                   <Field
                     type="name"
@@ -135,9 +135,9 @@ export const UserForm = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="email" className="block mb-1">
+                  <label htmlFor="email" className="block mb-1 text-white">
                     Email:
-                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                    <span className="text-white text-sm ml-1">(required)</span>
                   </label>
                   <Field
                     type="email"
@@ -153,9 +153,9 @@ export const UserForm = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="phone" className="block mb-1">
+                  <label htmlFor="phone" className="block mb-1 text-white">
                     Phone:
-                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                    <span className="text-white text-sm ml-1">(required)</span>
                   </label>
                   <Field
                     type="text"
@@ -171,9 +171,9 @@ export const UserForm = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="Password" className="block mb-1">
+                  <label htmlFor="Password" className="block mb-1 text-white">
                     Password:
-                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                    <span className="text-white text-sm ml-1">(required)</span>
                   </label>
                   <Field
                     type="text"
@@ -189,9 +189,9 @@ export const UserForm = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="ConfirmPassword" className="block mb-1">
+                  <label htmlFor="ConfirmPassword" className="block mb-1 text-white">
                     Confirm Password:
-                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                    <span className="text-white text-sm ml-1">(required)</span>
                   </label>
                   <Field
                     type="text"
