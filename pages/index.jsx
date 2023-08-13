@@ -18,6 +18,19 @@ export async function getStaticProps(){
     }
   });
 
+  const categories = await prisma.Category.findMany({
+    orderBy : {
+      CreatedDate:'desc'
+    },
+    include:{
+      User:{
+        select:{
+          UserName:true
+        }
+      },
+    }
+  });
+
   const AllItems = items.map((data)=>({
     items_id:data.items_id,
     name:data.name,
@@ -32,11 +45,12 @@ export async function getStaticProps(){
   return{
     props:{
       AllItems:JSON.parse(JSON.stringify(AllItems)),
+      categories:JSON.parse(JSON.stringify(categories)),
     }
   }
 }
 
-export default function Home({AllItems}) {
+export default function Home({AllItems, categories}) {
   return (
     <div className="flex flex-col w-full h-full py-0 pt-32">
       <MainHeader title="Hulu Media Ecommerce : Home" />
