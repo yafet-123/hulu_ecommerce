@@ -55,8 +55,8 @@ export default function Home({AllItems, categories}) {
     <div className="flex flex-col w-full h-full py-0 pt-32">
       <MainHeader title="Hulu Media Ecommerce : Home" />
       <div className="flex flex-col-reverse lg:flex-row px-2 lg:px-36">
-        <ListCategories />
-        <List />
+        <ListCategories categories={categories} />
+        <List AllItems={AllItems} />
       </div>
     </div>
   )

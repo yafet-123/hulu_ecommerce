@@ -1,6 +1,26 @@
 import List from "../components/Categories/List";
 import { MainHeader } from '../components/common/MainHeader';
 
+export async function getStaticProps(){
+  const categories = await prisma.Category.findMany({
+    orderBy : {
+      CreatedDate:'desc'
+    },
+    include:{
+      User:{
+        select:{
+          UserName:true
+        }
+      },
+    }
+  });
+
+  return{
+    props:{
+      categories:JSON.parse(JSON.stringify(categories)),
+    }
+  }
+}
 
 export default function Categories() {
   return (
