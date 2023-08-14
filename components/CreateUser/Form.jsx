@@ -16,7 +16,8 @@ const initialValues = {
   name: "",
   email: "",
   phone: "",
-  message: "",
+  Password: "",
+  ConfirmPassword:""
 };
 
 const validateForm = (values) => {
@@ -72,7 +73,7 @@ export const UserForm = () => {
   const handleSubmit = async (values) => {
     console.log(values);
     try {
-      const data = await axios.post(`../api/SentMail`,{
+      const data = await axios.post(`../api/CreateUser`,{
         "name": values.name,
         "email": values.email,
         "phone": values.phone,
