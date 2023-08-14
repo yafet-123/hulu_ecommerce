@@ -23,11 +23,11 @@ export async function getStaticProps(){
   }
 }
 
-export default function Categories() {
+export default function Categories({categories}) {
   return (
     <main className="w-full h-full px-2 lg:px-10 py-32 bg-white flex flex-col">
       <MainHeader title="Hulu Media Ecommerce : Categories" />
-      <List />
+      <List categories={categories} />
     </main> 
   )
 }
