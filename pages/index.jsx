@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MainHeader } from '../components/common/MainHeader';
 import List from '../components/Home/List';
 import ListCategories from "../components/Categories/List";
+import { prisma } from '../util/db.server.js'
 
 export async function getStaticProps(){
   const items = await prisma.Items.findMany({
@@ -40,12 +41,12 @@ export async function getStaticProps(){
     profile:data.profile,
     Condition:data.Condition,
     CreatedDate:data.CreatedDate
-  })
+  }))
 
   return{
     props:{
       AllItems:JSON.parse(JSON.stringify(AllItems)),
-      categories:JSON.parse(JSON.stringify(categories)),
+      categories:JSON.parse(JSON.stringify(categories))
     }
   }
 }

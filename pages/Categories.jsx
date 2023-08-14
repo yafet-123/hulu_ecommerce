@@ -1,5 +1,6 @@
 import List from "../components/Categories/List";
 import { MainHeader } from '../components/common/MainHeader';
+import { prisma } from '../util/db.server.js'
 
 export async function getStaticProps(){
   const categories = await prisma.Category.findMany({
