@@ -77,13 +77,12 @@ export const UserForm = () => {
         "name": values.name,
         "email": values.email,
         "phone": values.phone,
-        "message": values.message
+        "Password": values.Password
       }).then(function (response) {
         console.log(response.data);
         setModalIsOpen(true);
       }).catch(function (error) {
         setModalIsOpenone(true);
-        setLoading(false)
       });
     } catch (error) {
       console.error("Error:", error);
