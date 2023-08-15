@@ -5,7 +5,7 @@ export default function CreateUser() {
   return (
     <main className="w-full h-full px-2 lg:px-10 py-32 bg-white flex flex-col">
       <MainHeader title="Hulu Media Ecommerce : CreateUser" />
-      <UserForm />
+      <UserForm type='Signin' />
     </main> 
   )
 }

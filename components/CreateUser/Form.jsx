@@ -56,7 +56,7 @@ const validateForm = (values) => {
   return errors;
 };
 
-export const UserForm = () => {
+export const UserForm = ({type}) => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
@@ -94,7 +94,13 @@ export const UserForm = () => {
     console.log("contact");
     router.reload()
   };
-
+  const initialValues = {
+    name: "",
+    email: "",
+    phone: "",
+    Password: "",
+    ConfirmPassword:""
+  };
   const closeModalone = () => {
     setModalIsOpenone(false);
   };
@@ -113,7 +119,7 @@ export const UserForm = () => {
             <div className="grid grid-cols-10 center py-2 shadow-lg">
               <div className="col-start-4 col-span-4 px-8 pt-6 pb-8 mb-4 bg-[#8C34E8]">
                 <h3 className="font-poppins text-left text-white font-bold text-4xl lg:tetx-6xl mb-5">
-                  Sign In
+                  {type}
                 </h3>
 
                 <div className="mb-4">
