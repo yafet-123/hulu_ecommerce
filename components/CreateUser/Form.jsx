@@ -70,7 +70,7 @@ export const UserForm = ({type}) => {
       path: <BsInstagram size={30} color="black" />,
     },
   ];
-  const handleSubmit = async (values) => {
+  const handleSubmitForUpdate = async (values) => {
     console.log(values);
     try {
       const data = await axios.post(`../api/CreateUser`,{
@@ -103,12 +103,12 @@ export const UserForm = ({type}) => {
       <Formik
         initialValues={initialValues}
         validate={validateForm}
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmitForUpdate}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmitForUpdate }) => (
           <form
             className=""
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitForUpdate}
           > 
             <div className="grid grid-cols-10 center py-2 shadow-lg">
               <div className="col-start-4 col-span-4 px-8 pt-6 pb-8 mb-4 bg-[#8C34E8]">
@@ -228,6 +228,7 @@ export const UserForm = ({type}) => {
         {/* Add your modal content here */}
         <div className="flex flex-col items-center justify-center bg-[#F7F7F7] w-[350px] h-[200px] p-2 border rounded-sm ">
           <p className="text-md lg:text-xl mb-5 text-center">
+            Singin Successfully.
           </p>
           <button
             onClick={closeModal}
@@ -247,7 +248,7 @@ export const UserForm = ({type}) => {
         {/* Add your modal content here */}
         <div className="flex flex-col items-center justify-center bg-[#F7F7F7] w-[350px] h-[200px] p-2 border rounded-sm ">
           <p className="text-md lg:text-xl mb-5 text-center">
-            Signin un Successfull. Please retry again.
+            Singin Submitted un Successfull. Please retry again.
           </p>
           <button
             onClick={closeModalone}

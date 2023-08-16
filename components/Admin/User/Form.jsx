@@ -12,12 +12,6 @@ import Link from "next/link";
 import ReactModal from "react-modal";
 import { usePathname, useRouter } from "next/router";
 
-const initialValues = {
-    name: "user.UserName",
-    email: "user.email",
-    phone:"user.phonenumber"
-  };
-
 
 const validateForm = (values) => {
   const errors = {};
@@ -44,19 +38,12 @@ const validateForm = (values) => {
     errors.phone = "Phone is required";
   }
 
-  if (!values.ConfirmPassword) {
-    errors.ConfirmPassword = "Confirm Password is required";
-  }
-
-  if(!values.Password){
-    errors.Password = "Password is required"
-  }
-
   return errors;
 };
 
-export const UserForm = ({type, user}) => {
+export const UpdateForm = ({type, user}) => {
   const router = useRouter();
+  console.log(user)
   const userId = router.query.id;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
@@ -70,12 +57,9 @@ export const UserForm = ({type, user}) => {
       path: <BsInstagram size={30} color="black" />,
     },
   ];
-  console.log(user)
-  
-
   const handleSubmit = async (values) => {
     if (!userId) return alert("Missing UserId!");
-
+    console.log(userId)
     try {
       const data = await axios.patch(`/api/User/Update/${userId}`, {
         "UserName": values.UserName,
@@ -95,7 +79,7 @@ export const UserForm = ({type, user}) => {
   const closeModal = () => {
     setModalIsOpen(false);
     console.log("contact");
-    router.reload()
+    router.push('/Admin/User')
   };
   
   const closeModalone = () => {
@@ -104,7 +88,13 @@ export const UserForm = ({type, user}) => {
   return (
     <div>
       <Formik
-        initialValues={initialValues}
+        initialValues={
+          {
+            name: user.UserName,
+            email: user.email,
+            phone:user.phonenumber
+          }
+        }
         validate={validateForm}
         onSubmit={handleSubmit}
       >
