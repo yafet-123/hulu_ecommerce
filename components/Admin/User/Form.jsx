@@ -13,12 +13,11 @@ import ReactModal from "react-modal";
 import { usePathname, useRouter } from "next/router";
 
 const initialValues = {
-  name: "",
-  email: "",
-  phone: "",
-  Password: "",
-  ConfirmPassword:""
-};
+    name: "user.UserName",
+    email: "user.email",
+    phone:"user.phonenumber"
+  };
+
 
 const validateForm = (values) => {
   const errors = {};
@@ -56,8 +55,9 @@ const validateForm = (values) => {
   return errors;
 };
 
-export const UserForm = ({type}) => {
+export const UserForm = ({type, user}) => {
   const router = useRouter();
+  const userId = router.query.id;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
   const socialMediaLinks = [
@@ -70,14 +70,17 @@ export const UserForm = ({type}) => {
       path: <BsInstagram size={30} color="black" />,
     },
   ];
+  console.log(user)
+  
+
   const handleSubmit = async (values) => {
-    console.log(values);
+    if (!userId) return alert("Missing UserId!");
+
     try {
-      const data = await axios.post(`../api/CreateUser`,{
-        "name": values.name,
+      const data = await axios.patch(`/api/User/${userId}`, {
+        "UserName": values.UserName,
         "email": values.email,
-        "phone": values.phone,
-        "Password": values.Password
+        "phonenumber":values.phonenumber
       }).then(function (response) {
         console.log(response.data);
         setModalIsOpen(true);
@@ -110,7 +113,7 @@ export const UserForm = ({type}) => {
             className=""
             onSubmit={handleSubmit}
           > 
-            <div className="grid grid-cols-10 center py-2 shadow-lg">
+            <div className="grid grid-cols-10 center py-2">
               <div className="col-start-4 col-span-4 px-8 pt-6 pb-8 mb-4 bg-[#8C34E8]">
                 <h3 className="font-poppins text-left text-white font-bold text-4xl lg:tetx-6xl mb-5">
                   {type}
@@ -165,42 +168,6 @@ export const UserForm = ({type}) => {
                   />
                   <ErrorMessage
                     name="phone"
-                    component="div"
-                    className="text-red-500"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="Password" className="block mb-1 text-white">
-                    Password:
-                    <span className="text-white text-sm ml-1">(required)</span>
-                  </label>
-                  <Field
-                    type="text"
-                    id="Password"
-                    name="Password"
-                    className="w-full p-2 text-black border border-gray-300"
-                  />
-                  <ErrorMessage
-                    name="Password"
-                    component="div"
-                    className="text-red-500"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="ConfirmPassword" className="block mb-1 text-white">
-                    Confirm Password:
-                    <span className="text-white text-sm ml-1">(required)</span>
-                  </label>
-                  <Field
-                    type="text"
-                    id="ConfirmPassword"
-                    name="ConfirmPassword"
-                    className="w-full p-2 text-black border border-gray-300"
-                  />
-                  <ErrorMessage
-                    name="ConfirmPassword"
                     component="div"
                     className="text-red-500"
                   />

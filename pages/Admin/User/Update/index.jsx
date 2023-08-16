@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import {UserForm} from "../../../../components/CreateUser/Form";
+import {UserForm} from "../../../../components/Admin/User/Form";
 import { useRouter } from 'next/router'
 
 export default function Update(){
@@ -9,7 +9,7 @@ export default function Update(){
   const [submitting, setIsSubmitting] = useState(false);
   useEffect(() => {
     const getUserDetails = async () => {
-      const response = await fetch(`/api/User/${userId}`);
+      const response = await fetch(`/api/User/Get/${userId}`);
       const data = await response.json();
       setUser({
         UserName: data.UserName,
@@ -52,9 +52,6 @@ export default function Update(){
       <UserForm
         type='Edit User'
         user={user}
-        setUser={setUser}
-        submitting={submitting}
-        handleSubmit={updatePrompt}
       />
     </section>
   );
