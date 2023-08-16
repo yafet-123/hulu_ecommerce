@@ -21,32 +21,6 @@ export default function Update(){
     if (userId) getUserDetails();
   }, [userId]);
 
-  const updatePrompt = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    if (!userId) return alert("Missing UserId!");
-
-    try {
-      const response = await fetch(`/api/User/${userId}`, {
-        method: "PATCH",
-        body: JSON.stringify({
-          UserName: user.UserName,
-          email: user.email,
-          phonenumber:user.phonenumber
-        }),
-      });
-
-      if (response.ok) {
-        router.push("/Admin/User");
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <section className="w-full h-full lg:pt-24">
       <UserForm

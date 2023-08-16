@@ -77,7 +77,7 @@ export const UserForm = ({type, user}) => {
     if (!userId) return alert("Missing UserId!");
 
     try {
-      const data = await axios.patch(`/api/User/${userId}`, {
+      const data = await axios.patch(`/api/User/Update/${userId}`, {
         "UserName": values.UserName,
         "email": values.email,
         "phonenumber":values.phonenumber
