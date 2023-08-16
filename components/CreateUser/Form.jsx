@@ -228,7 +228,6 @@ export const UserForm = ({type}) => {
         {/* Add your modal content here */}
         <div className="flex flex-col items-center justify-center bg-[#F7F7F7] w-[350px] h-[200px] p-2 border rounded-sm ">
           <p className="text-md lg:text-xl mb-5 text-center">
-            Your Enquiry form Submitted Successfully.
           </p>
           <button
             onClick={closeModal}
@@ -248,7 +247,7 @@ export const UserForm = ({type}) => {
         {/* Add your modal content here */}
         <div className="flex flex-col items-center justify-center bg-[#F7F7F7] w-[350px] h-[200px] p-2 border rounded-sm ">
           <p className="text-md lg:text-xl mb-5 text-center">
-            Your Enquiry form Submitted un Successfull. Please retry again.
+            Signin un Successfull. Please retry again.
           </p>
           <button
             onClick={closeModalone}
