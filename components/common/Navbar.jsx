@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import {BsFacebook, BsYoutube, BsLinkedin, BsInstagram, BsTwitter, BsTelegram} from 'react-icons/bs'
+import { useSession } from "next-auth/react";
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [shadow, setShadow] = useState(false);
+  const { status, data } = useSession();
   const router = useRouter();
   const NavLinks = [
     { path: "/", name: "Home" },
@@ -46,7 +48,11 @@ export const Navbar = () => {
   };
 
   const Login = () => {
-    router.push("/login");
+    router.push("/auth/login");
+  };
+
+  const Profile = () => {
+    router.push("/auth/login");
   };
 
 
@@ -99,24 +105,41 @@ export const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              <li>
-                <button
-                  type='button'
-                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#055741] border-black bg-[#17c294] rounded-xl px-4 py-1'
-                  onClick={()=> SignIn()}
-                >
-                  Sign In
-                </button>
-              </li>
-              <li>
-                <button
-                  type='button'
-                  className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#350963] border-white bg-[#8C34E8] rounded-xl px-4 py-1'
-                  onClick={()=> Login()}
-                >
-                  Login
-                </button>
-              </li>
+              <div>
+              { status === "authenticated" ? (
+                  <li>
+                    <button
+                      type='button'
+                      className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#350963] border-white bg-[#8C34E8] rounded-xl px-4 py-1'
+                      onClick={()=> Profile()}
+                    >
+                      profile
+                    </button>
+                  </li>
+                ):(
+                  <div className="flex flex-row">
+                    <li>
+                      <button
+                        type='button'
+                        className='mx-2 md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#055741] border-black bg-[#17c294] rounded-xl px-4 py-1'
+                        onClick={()=> SignIn()}
+                      >
+                        Sign In
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type='button'
+                        className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#350963] border-white bg-[#8C34E8] rounded-xl px-4 py-1'
+                        onClick={()=> Login()}
+                      >
+                        Login
+                      </button>
+                    </li>
+                  </div>
+                )
+              }
+            </div>
             </ul>
           </div>
         </div>

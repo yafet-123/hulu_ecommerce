@@ -1,5 +1,5 @@
-import {LoginForm} from "../components/Login/Form";
-import { MainHeader } from '../components/common/MainHeader';
+import {LoginForm} from "../../components/Login/Form";
+import { MainHeader } from '../../components/common/MainHeader';
 
 export default function Login() {
   return (
