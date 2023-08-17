@@ -52,7 +52,7 @@ export const Navbar = () => {
   };
 
   const Profile = () => {
-    router.push("/auth/login");
+    router.push("/profile");
   };
 
 
@@ -110,7 +110,7 @@ export const Navbar = () => {
                   <li>
                     <button
                       type='button'
-                      className='md:my-0 my-7 text-white text-lg md:text-xl cursor-pointer hover:text-white hover:bg-[#350963] border-white bg-[#8C34E8] rounded-xl px-4 py-1'
+                      className='w-10 h-10 rounded-full text-white bg-[#055741]'
                       onClick={()=> Profile()}
                     >
                       profile
