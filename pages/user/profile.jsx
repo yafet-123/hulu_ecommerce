@@ -5,6 +5,10 @@ import List from '../../components/profile/List';
 import ProfileCard from '../../components/profile/ProfileCard'
 import { useSession } from "next-auth/react";
 
+export async function getServerSideProps(context){
+  const {params,req,res,query} = context
+}
+
 export default function Home() {
   const { status, data } = useSession();
   return (
