@@ -5,11 +5,29 @@ import List from '../../components/profile/List';
 import ProfileCard from '../../components/UserProfile/ProfileCard'
 import { useSession } from "next-auth/react";
 
-// export async function getServerSideProps(context){
-//   const {params,req,res,query} = context
-//   const cookies = req.headers.cookie;
+export async function getServerSideProps(context){
+  const {params,req,res,query} = context
+  const cookies = req.headers.cookie;
+
+  const categories = await prisma.Category.findMany({
+    orderBy : {
+      CreatedDate:'desc'
+    },
+    include:{
+      User:{
+        select:{
+          UserName:true
+        }
+      },
+    }
+  });
   
-// }
+  return{
+    props:{
+      categories:JSON.parse(JSON.stringify(categories)),
+    }
+  }
+}
 
 export default function Home() {
   const { status, data } = useSession();
