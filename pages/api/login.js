@@ -51,6 +51,7 @@ export default async function handleaddlogin(req, res){
   	res.status(StatusCodes.OK).json({
     	userId: user.user_id,
     	name: user.UserName,
+    	phone:user.phonenumber,
     	role:user.role,
     	email:user.email,
     	token
