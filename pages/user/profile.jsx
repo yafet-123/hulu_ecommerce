@@ -7,7 +7,7 @@ import ProfileCard from '../../components/profile/ProfileCard'
 export default function Home() {
   return (
     <div className="flex flex-col w-full h-full py-0 pt-32">
-      <MainHeader title="Hulu Media Ecommerce : Profile" />
+      <MainHeader title="Hulu Media Ecommerce : User Profile" />
       <ProfileCard />
       <List />
     </div>
