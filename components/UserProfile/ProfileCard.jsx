@@ -13,13 +13,13 @@ export default function ProfileCard({profile}) {
           alt="profile image"
         />
         <p className="font-poppins text-xl lg:text-3xl font-normal text-center text-[#505e66] mt-5 w-full">
-          {data?.user.name}
+          {profile?.user.name}
         </p>
         <p className="font-poppins text-lg lg:text-2xl font-normal text-center text-[#505e66] mt-2 w-full">
-          {data?.user.phone}
+          {profile?.user.phone}
         </p>
         <p className="font-poppins text-md lg:text-xl font-normal text-center text-[#505e66] my-2 w-full">
-          {data?.user.email}
+          {profile?.user.email}
         </p>
     </div>
   );
