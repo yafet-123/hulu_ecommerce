@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 
 export async function getServerSideProps(context){
   const {params,req,res,query} = context
+  
 }
 
 export default function Home() {
