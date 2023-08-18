@@ -52,7 +52,7 @@ export const Navbar = () => {
   };
 
   const Profile = () => {
-    router.push("/profile");
+    router.push("/user/profile");
   };
 
 
