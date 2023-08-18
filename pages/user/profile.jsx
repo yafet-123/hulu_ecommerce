@@ -7,29 +7,22 @@ import { useSession } from "next-auth/react";
 
 export async function getServerSideProps(context){
   const {params,req,res,query} = context
-  const cookies = req.headers.cookie;
+  const id = query.user_id
 
-  const categories = await prisma.Category.findMany({
-    orderBy : {
-      CreatedDate:'desc'
+  const data = await prisma.User.findUnique({
+    where:{
+      user_id: Number(id),
     },
-    include:{
-      User:{
-        select:{
-          UserName:true
-        }
-      },
-    }
   });
-  
+
   return{
     props:{
-      categories:JSON.parse(JSON.stringify(categories)),
+      user:JSON.parse(JSON.stringify(data)),
     }
   }
 }
 
-export default function Home() {
+export default function Home({user}) {
   const { status, data } = useSession();
   return (
     <div className="flex flex-col w-full h-full py-0 pt-32">
