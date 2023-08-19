@@ -15,9 +15,16 @@ export async function getServerSideProps(context){
     },
   });
 
+  const items = await prisma.Items.find({
+    where:{
+      user_id: Number(id),
+    },
+  });
+
   return{
     props:{
       user:JSON.parse(JSON.stringify(data)),
+      items:JSON.parse(JSON.stringify(items)),
     }
   }
 }
