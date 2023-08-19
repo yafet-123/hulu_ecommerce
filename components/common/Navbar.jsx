@@ -52,7 +52,10 @@ export const Navbar = () => {
   };
 
   const Profile = () => {
-    router.push("/user/profile");
+    router.push({
+      pathname: "/user/profile",
+      query: { user_id: data?.user.user_id },
+    })
   };
 
 
