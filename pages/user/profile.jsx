@@ -23,11 +23,10 @@ export async function getServerSideProps(context){
 }
 
 export default function Home({user}) {
-  const { status, data } = useSession();
   return (
     <div className="flex flex-col w-full h-full py-0 pt-32">
       <MainHeader title="Hulu Media Ecommerce : User Profile" />
-      <ProfileCard profile={data} />
+      <ProfileCard user={user} />
       
     </div>
   )

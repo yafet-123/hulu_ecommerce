@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProfileCard({profile}) {
+export default function ProfileCard({user}) {
   return (
     <div className="flex flex-col justify-center items-center lg:pb-20">
         <Image
@@ -13,13 +13,13 @@ export default function ProfileCard({profile}) {
           alt="profile image"
         />
         <p className="font-poppins text-xl lg:text-3xl font-normal text-center text-[#505e66] mt-5 w-full">
-          {profile?.user.name}
+          {user.UserName}
         </p>
         <p className="font-poppins text-lg lg:text-2xl font-normal text-center text-[#505e66] mt-2 w-full">
-          {profile?.user.phone}
+          {user.email}
         </p>
         <p className="font-poppins text-md lg:text-xl font-normal text-center text-[#505e66] my-2 w-full">
-          {profile?.user.email}
+          {user.phonenumber}
         </p>
     </div>
   );
