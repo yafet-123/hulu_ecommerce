@@ -34,7 +34,7 @@ export default function Home({user}) {
     <div className="flex flex-col w-full h-full py-0 pt-32">
       <MainHeader title="Hulu Media Ecommerce : User Profile" />
       <ProfileCard user={user} />
-      
+      <List items={items} />
     </div>
   )
 }
