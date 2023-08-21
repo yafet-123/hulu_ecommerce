@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
+ 
 export default function Display({ sale }) {
   const [paddingTop, setPaddingTop] = useState("0");
   return (
@@ -29,7 +29,7 @@ export default function Display({ sale }) {
         </div>
         <div className="flex flex-col items-center mr-5">
           <p className="flex font-poppins text-md lg:text-lg font-normal text-left text-[#505e66] my-2 w-full mr-5">
-            {sale.posted}
+            {sale.CreatedDate}
           </p>
         </div>
       </div>

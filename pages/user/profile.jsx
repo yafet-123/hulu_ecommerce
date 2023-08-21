@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { MainHeader } from '../../components/common/MainHeader';
-import List from '../../components/profile/List';
+import List from '../../components/UserProfile/List';
 import ProfileCard from '../../components/UserProfile/ProfileCard'
 import { useSession } from "next-auth/react";
+import { prisma } from '../../util/db.server.js'
 
 export async function getServerSideProps(context){
   const {params,req,res,query} = context
@@ -15,7 +16,7 @@ export async function getServerSideProps(context){
     },
   });
 
-  const items = await prisma.Items.find({
+  const items = await prisma.Items.findMany({
     where:{
       user_id: Number(id),
     },
@@ -29,7 +30,7 @@ export async function getServerSideProps(context){
   }
 }
 
-export default function Home({user}) {
+export default function Home({user,items}) {
   return (
     <div className="flex flex-col w-full h-full py-0 pt-32">
       <MainHeader title="Hulu Media Ecommerce : User Profile" />
