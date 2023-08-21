@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import {BsFacebook, BsYoutube, BsLinkedin, BsInstagram, BsTwitter, BsTelegram} from 'react-icons/bs'
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [shadow, setShadow] = useState(false);
-  const { status, data } = useSession();
+  const { status, data: session } = useSession();
   const router = useRouter();
   const NavLinks = [
     { path: "/", name: "Home" },
@@ -54,7 +54,7 @@ export const Navbar = () => {
   const Profile = () => {
     router.push({
       pathname: "/user/profile",
-      query: { user_id: data?.user.user_id },
+      query: { user_id: session?.user.user_id },
     })
   };
 
@@ -109,15 +109,46 @@ export const Navbar = () => {
                 </li>
               ))}
               <div>
-              { status === "authenticated" ? (
+              { session?.user  ? (
                   <li>
                     <button
                       type='button'
                       className='w-10 h-10 rounded-full text-white bg-[#055741]'
-                      onClick={()=> Profile()}
+                      onClick={() => setToggleDropdown(!toggleDropdown)}
                     >
                       profile
                     </button>
+                    {toggleDropdown && (
+                      <div className='dropdown w-16'>
+                        <Link
+                          href={{
+                            pathname: '/user/profile',
+                            query: { user_id: session?.user.user_id },
+                          }}
+                          className='dropdown_link'
+                          onClick={() => setToggleDropdown(false)}
+                        >
+                          My Profile
+                        </Link>
+                        <Link
+                          href='/create-prompt'
+                          className='dropdown_link'
+                          onClick={() => setToggleDropdown(false)}
+                        >
+                          Create Prompt
+                        </Link>
+                        <button
+                          type='button'
+                          onClick={() => {
+                            setToggleDropdown(false);
+                            signOut();
+                          }}
+                          className=''
+                        >
+                          Sign Out
+                        </button>
+                      </div>
+                    )}
                   </li>
                 ):(
                   <div className="flex flex-row">
