@@ -111,13 +111,14 @@ export const Navbar = () => {
               <div>
               { session?.user  ? (
                   <li>
-                    <button
-                      type='button'
-                      className='w-10 h-10 rounded-full text-white bg-[#055741]'
+                    <Image
+                      src={session?.user.Image}
+                      width={37}
+                      height={37}
+                      className='rounded-full'
+                      alt='profile'
                       onClick={() => setToggleDropdown(!toggleDropdown)}
-                    >
-                      profile
-                    </button>
+                    />
                     {toggleDropdown && (
                       <div className='dropdown w-16'>
                         <Link
@@ -131,11 +132,11 @@ export const Navbar = () => {
                           My Profile
                         </Link>
                         <Link
-                          href='/create-prompt'
+                          href='/user/create/Item'
                           className='dropdown_link'
                           onClick={() => setToggleDropdown(false)}
                         >
-                          Create Prompt
+                          Create Item
                         </Link>
                         <button
                           type='button'

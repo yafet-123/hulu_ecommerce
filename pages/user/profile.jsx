@@ -30,7 +30,7 @@ export async function getServerSideProps(context){
   }
 }
 
-export default function Home({user,items}) {
+export default function Profile({user,items}) {
   return (
     <div className="flex flex-col w-full h-full py-0 pt-32">
       <MainHeader title="Hulu Media Ecommerce : User Profile" />
