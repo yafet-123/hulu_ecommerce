@@ -95,33 +95,7 @@ export const ContactForm = () => {
     setModalIsOpenone(false);
   };
   return (
-    <div className="w-full flex flex-col md:flex-row items-center space-y-6">
-      <div className="flex flex-col px-2 lg:px-10 w-full">
-        <h1 className="font-poppins font-bold text-4xl lg:tetx-6xl text-left text-[#010101] mb-5">
-          Contact
-        </h1>
-        <div className="font-poppins text-left text-[#010101]">
-          <p className="font-normal text-xl lg:text-2xl mb-5">
-            hulumedia@gmail.com{" "}
-          </p>
-          <p className="font-normal text-xl lg:text-2xl mb-5">
-            Ferensay Legasiyon
-          </p>
-          <p className="font-normal text-xl lg:text-2xl mb-5">
-            WhatsApp: +251934781038
-          </p>
-        </div>
-
-        <div className="flex gap-4">
-          {socialMediaLinks.map((paths, index) => {
-            return (
-              <Link key={index} href={paths.id} target="_blank">
-                {paths.path}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
+    <div className="w-full flex flex-col items-center space-y-6">
       <Formik
         initialValues={initialValues}
         validate={validateForm}
