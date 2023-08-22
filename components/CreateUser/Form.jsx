@@ -122,7 +122,7 @@ export const UserForm = ({type}) => {
                     <span className="text-white text-sm ml-1">(required)</span>
                   </label>
                   <Field
-                    type="name"
+                    type="text"
                     id="name"
                     name="name"
                     className="w-full p-2 text-black border border-gray-300"

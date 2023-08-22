@@ -116,7 +116,7 @@ export const ItemForm = () => {
                 <span className="text-gray-500 text-sm ml-1">(required)</span>
               </label>
               <Field
-                type="name"
+                type="text"
                 id="name"
                 name="name"
                 className="w-full p-2 text-black border border-gray-300"
@@ -129,54 +129,72 @@ export const ItemForm = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="email" className="block mb-1">
-                Email:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="email"
-                id="email"
-                name="email"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="phone" className="block mb-1">
-                Phone:
+              <label htmlFor="price" className="block mb-1">
+                Price:
                 <span className="text-gray-500 text-sm ml-1">(required)</span>
               </label>
               <Field
                 type="text"
-                id="phone"
-                name="phone"
+                id="price"
+                name="price"
                 className="w-full p-2 text-black border border-gray-300"
               />
               <ErrorMessage
-                name="phone"
+                name="price"
                 component="div"
                 className="text-red-500"
               />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="message" className="block mb-1">
-                Message:
+              <label htmlFor="profile" className="block mb-1">
+                Profile:
                 <span className="text-gray-500 text-sm ml-1">(required)</span>
               </label>
               <Field
-                as="textarea"
-                id="message"
-                name="message"
+                type="text"
+                id="profile"
+                name="profile"
                 className="w-full p-2 text-black border border-gray-300"
               />
               <ErrorMessage
-                name="message"
+                name="profile"
+                component="div"
+                className="text-red-500"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="Condition" className="block mb-1">
+                Condition:
+                <span className="text-gray-500 text-sm ml-1">(required)</span>
+              </label>
+              <Field
+                type="text"
+                id="Condition"
+                name="Condition"
+                className="w-full p-2 text-black border border-gray-300"
+              />
+              <ErrorMessage
+                name="Condition"
+                component="div"
+                className="text-red-500"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="Description" className="block mb-1">
+                Description:
+                <span className="text-gray-500 text-sm ml-1">(required)</span>
+              </label>
+              <Field
+                type="textarea"
+                id="Description"
+                name="Description"
+                className="w-full p-2 text-black border border-gray-300"
+              />
+              <ErrorMessage
+                name="Description"
                 component="div"
                 className="text-red-500"
               />
