@@ -14,44 +14,44 @@ import { usePathname, useRouter } from "next/router";
 
 const initialValues = {
   name: "",
-  email: "",
-  phone: "",
-  message: "",
+  Description: "",
+  price: "",
+  Image: "",
+  profile:"",
+  Condition:"",
 };
 
 const validateForm = (values) => {
   const errors = {};
-  const MAX_TEXT_LENGTH = 100;
-  const Name = values.name;
-  console.log(Name.length);
-
-  if (Name.length > MAX_TEXT_LENGTH) {
-    errors.name = `Name must be ${MAX_TEXT_LENGTH} characters or less`;
-    console.log(errors.name);
-  }
 
   if (!values.name) {
     errors.name = "Name is required";
   }
 
-  if (!values.email) {
-    errors.email = "Email is required";
-  } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
-    errors.email = "Invalid email address";
+  if (!values.Description) {
+    errors.Description = "Description is required";
   }
 
-  if (!values.phone) {
-    errors.phone = "Phone is required";
+  if (!values.price) {
+    errors.price = "price is required";
   }
 
-  if (!values.message) {
-    errors.message = "Message is required";
+  if (!values.Image) {
+    errors.Image = "Message is required";
+  }
+
+  if (!values.profile) {
+    errors.profile = "profile is required";
+  }
+
+  if (!values.Condition) {
+    errors.Condition = "Condition is required";
   }
 
   return errors;
 };
 
-export const ContactForm = () => {
+export const ItemForm = () => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
@@ -202,7 +202,7 @@ export const ContactForm = () => {
         {/* Add your modal content here */}
         <div className="flex flex-col items-center justify-center bg-[#F7F7F7] w-[350px] h-[200px] p-2 border rounded-sm ">
           <p className="text-md lg:text-xl mb-5 text-center">
-            Your Enquiry form Submitted Successfully.
+            Item added Successfully.
           </p>
           <button
             onClick={closeModal}
@@ -222,7 +222,7 @@ export const ContactForm = () => {
         {/* Add your modal content here */}
         <div className="flex flex-col items-center justify-center bg-[#F7F7F7] w-[350px] h-[200px] p-2 border rounded-sm ">
           <p className="text-md lg:text-xl mb-5 text-center">
-            Your Enquiry form Submitted un Successfull. Please retry again.
+            Item form Submitted un Successfull. Please retry again.
           </p>
           <button
             onClick={closeModalone}
