@@ -107,7 +107,7 @@ export const ContactForm = () => {
             onSubmit={handleSubmit}
           >
             <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
-              Enquiry form
+              Create and share amazing products with the world, and let your imagination run wild
             </h3>
 
             <div className="mb-4">
