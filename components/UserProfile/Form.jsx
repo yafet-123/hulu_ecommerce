@@ -70,9 +70,11 @@ export const ItemForm = () => {
     try {
       const data = await axios.post(`../api/Item/Add`,{
         "name": values.name,
-        "email": values.email,
-        "phone": values.phone,
-        "message": values.message
+        "Description": values.Description,
+        "price": values.price,
+        "Image": values.Image,
+        "profile": values.profile,
+        "Condition": values.Condition
       }).then(function (response) {
         console.log(response.data);
         setModalIsOpen(true);
