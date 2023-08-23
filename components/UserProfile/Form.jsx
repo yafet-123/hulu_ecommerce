@@ -65,14 +65,33 @@ export const ItemForm = () => {
       path: <BsInstagram size={30} color="black" />,
     },
   ];
+
+  async function imageUploadData(values) {
+    const formData = new FormData();
+    let imagesecureUrl = ""
+    formData.append('file', values.Image)
+
+    formData.append('upload_preset', 'my_upload')
+
+    const imageUpload = await fetch(`https://api.cloudinary.com/v1_1/df7hlpjcj/image/upload`,{
+      method:'POST',
+      body: formData
+    }).then(r=>
+        r.json()
+        
+    )
+    imagesecureUrl = imageUpload.secure_url
+    return imagesecureUrl
+  }
   const handleSubmit = async (values) => {
     console.log(values);
+    const imageData = await imageUploadData()
     try {
       const data = await axios.post(`../api/Item/Add`,{
         "name": values.name,
         "Description": values.Description,
         "price": values.price,
-        "Image": values.Image,
+        "Image": imageData,
         "profile": values.profile,
         "Condition": values.Condition
       }).then(function (response) {
