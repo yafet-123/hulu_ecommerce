@@ -37,7 +37,7 @@ const validateForm = (values) => {
   }
 
   if (!values.Image) {
-    errors.Image = "Message is required";
+    errors.Image = "Image is required";
   }
 
   if (!values.profile) {
@@ -68,7 +68,7 @@ export const ItemForm = () => {
   const handleSubmit = async (values) => {
     console.log(values);
     try {
-      const data = await axios.post(`../api/SentMail`,{
+      const data = await axios.post(`../api/Item/Add`,{
         "name": values.name,
         "email": values.email,
         "phone": values.phone,
@@ -95,7 +95,7 @@ export const ItemForm = () => {
     setModalIsOpenone(false);
   };
   return (
-    <div className="w-full flex flex-col items-center space-y-6">
+    <div className="w-full flex flex-col items-center space-y-6 px-5 lg:px-52">
       <Formik
         initialValues={initialValues}
         validate={validateForm}
@@ -195,6 +195,24 @@ export const ItemForm = () => {
               />
               <ErrorMessage
                 name="Description"
+                component="div"
+                className="text-red-500"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="Image" className="block mb-1">
+                Image:
+                <span className="text-gray-500 text-sm ml-1">(required)</span>
+              </label>
+              <Field
+                type="file"
+                id="Image"
+                name="Image"
+                className="w-full p-2 text-black border border-gray-300"
+              />
+              <ErrorMessage
+                name="Image"
                 component="div"
                 className="text-red-500"
               />
