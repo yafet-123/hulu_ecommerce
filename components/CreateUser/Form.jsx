@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {
-  BsFacebook,
-  BsYoutube,
-  BsLinkedin,
-  BsInstagram,
-  BsTwitter,
-} from "react-icons/bs";
+import Image from 'next/image'
 import axios from 'axios';
 import Link from "next/link";
 import ReactModal from "react-modal";
@@ -16,7 +10,7 @@ const initialValues = {
   name: "",
   email: "",
   phone: "",
-  Image:"",
+  image:"",
   Password: "",
   ConfirmPassword:""
 };
@@ -46,8 +40,8 @@ const validateForm = (values) => {
     errors.phone = "Phone is required";
   }
 
-  if (!values.Image) {
-    errors.Image = "Image is required";
+  if (!values.image) {
+    errors.image = "Image is required";
   }
 
   if (!values.ConfirmPassword) {
@@ -65,20 +59,12 @@ export const UserForm = ({type}) => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
-  const socialMediaLinks = [
-    {
-      id: "https://www.linkedin.com/in/helen-zeray-789b89267",
-      path: <BsLinkedin size={30} color="black" />,
-    },
-    {
-      id: "https://instagram.com/helenzeray1?igshid=ZGUzMzM3NWJiOQ==",
-      path: <BsInstagram size={30} color="black" />,
-    },
-  ];
-  async function imageUploadData(values) {
+  const [images,setImage] = useState()
+  console.log(images)
+  async function imageUploadData({images}) {
     const formData = new FormData();
     let imagesecureUrl = ""
-    formData.append('file', values.Image)
+    formData.append('file', images)
 
     formData.append('upload_preset', 'my_upload')
 
@@ -95,6 +81,7 @@ export const UserForm = ({type}) => {
 
   const handleSubmitForUpdate = async (values) => {
     console.log(values);
+    const images = values.image
     const imageData = await imageUploadData()
     try {
       const data = await axios.post(`../api/CreateUser`,{
@@ -232,20 +219,30 @@ export const UserForm = ({type}) => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="Image" className="block mb-1">
+                  <label htmlFor="image" className="block mb-1 text-white">
                     Image:
-                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                    <span className="text-white text-sm ml-1">(required)</span>
                   </label>
                   <Field
                     type="file"
-                    id="Image"
-                    name="Image"
+                    id="image"
+                    name="image"
+                    onChange={(e) => setImage(e.target.files[0])}
                     className="w-full p-2 text-black border border-gray-300"
                   />
                   <ErrorMessage
-                    name="Image"
+                    name="image"
                     component="div"
                     className="text-red-500"
+                  />
+                </div>
+
+                <div className={images == null ? "hidden" : "flex justify-center items-center mb-10"}>
+                  <Image 
+                      src={images == null ? "/images/bgImage1.avif" :URL.createObjectURL(images)} 
+                      width={200} height={100} 
+                      alt="image that will be displayed" 
+                      className=""
                   />
                 </div>
 
@@ -261,6 +258,8 @@ export const UserForm = ({type}) => {
           </form>
         )}
       </Formik>
+
+      
 
       <ReactModal
         isOpen={modalIsOpen}

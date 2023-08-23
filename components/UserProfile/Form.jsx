@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {
-  BsFacebook,
-  BsYoutube,
-  BsLinkedin,
-  BsInstagram,
-  BsTwitter,
-} from "react-icons/bs";
+import Image from 'next/image'
 import axios from 'axios';
 import Link from "next/link";
 import ReactModal from "react-modal";
@@ -230,6 +224,7 @@ export const ItemForm = () => {
                 type="file"
                 id="Image"
                 name="Image"
+                onChange={(e) => setImage(e.target.files[0])} 
                 className="w-full p-2 text-black border border-gray-300"
               />
               <ErrorMessage
