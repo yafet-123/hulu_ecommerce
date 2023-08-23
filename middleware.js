@@ -15,4 +15,4 @@ export default withAuth({
 })
 
 
-export const config = { matcher: ["/user/profile"] };
+export const config = { matcher: ["/user/profile", "/user/create/Item"] };

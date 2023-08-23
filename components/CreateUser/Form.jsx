@@ -16,6 +16,7 @@ const initialValues = {
   name: "",
   email: "",
   phone: "",
+  Image:"",
   Password: "",
   ConfirmPassword:""
 };
@@ -45,6 +46,10 @@ const validateForm = (values) => {
     errors.phone = "Phone is required";
   }
 
+  if (!values.Image) {
+    errors.Image = "Image is required";
+  }
+
   if (!values.ConfirmPassword) {
     errors.ConfirmPassword = "Confirm Password is required";
   }
@@ -70,12 +75,32 @@ export const UserForm = ({type}) => {
       path: <BsInstagram size={30} color="black" />,
     },
   ];
+  async function imageUploadData(values) {
+    const formData = new FormData();
+    let imagesecureUrl = ""
+    formData.append('file', values.Image)
+
+    formData.append('upload_preset', 'my_upload')
+
+    const imageUpload = await fetch(`https://api.cloudinary.com/v1_1/df7hlpjcj/image/upload`,{
+      method:'POST',
+      body: formData
+    }).then(r=>
+        r.json()
+        
+    )
+    imagesecureUrl = imageUpload.secure_url
+    return imagesecureUrl
+  }
+
   const handleSubmitForUpdate = async (values) => {
     console.log(values);
+    const imageData = await imageUploadData()
     try {
       const data = await axios.post(`../api/CreateUser`,{
         "name": values.name,
         "email": values.email,
+        "Image": imageData,
         "phone": values.phone,
         "Password": values.Password
       }).then(function (response) {
@@ -201,6 +226,24 @@ export const UserForm = ({type}) => {
                   />
                   <ErrorMessage
                     name="ConfirmPassword"
+                    component="div"
+                    className="text-red-500"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="Image" className="block mb-1">
+                    Image:
+                    <span className="text-gray-500 text-sm ml-1">(required)</span>
+                  </label>
+                  <Field
+                    type="file"
+                    id="Image"
+                    name="Image"
+                    className="w-full p-2 text-black border border-gray-300"
+                  />
+                  <ErrorMessage
+                    name="Image"
                     component="div"
                     className="text-red-500"
                   />
