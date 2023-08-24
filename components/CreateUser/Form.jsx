@@ -5,66 +5,30 @@ import axios from 'axios';
 import Link from "next/link";
 import ReactModal from "react-modal";
 import { usePathname, useRouter } from "next/router";
-
-const initialValues = {
-  name: "",
-  email: "",
-  phone: "",
-  image:"",
-  Password: "",
-  ConfirmPassword:""
-};
-
-const validateForm = (values) => {
-  const errors = {};
-  const MAX_TEXT_LENGTH = 100;
-  const Name = values.name;
-  console.log(Name.length);
-
-  if (Name.length > MAX_TEXT_LENGTH) {
-    errors.name = `Name must be ${MAX_TEXT_LENGTH} characters or less`;
-    console.log(errors.name);
-  }
-
-  if (!values.name) {
-    errors.name = "Name is required";
-  }
-
-  if (!values.email) {
-    errors.email = "Email is required";
-  } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
-    errors.email = "Invalid email address";
-  }
-
-  if (!values.phone) {
-    errors.phone = "Phone is required";
-  }
-
-  if (!values.image) {
-    errors.image = "Image is required";
-  }
-
-  if (!values.ConfirmPassword) {
-    errors.ConfirmPassword = "Confirm Password is required";
-  }
-
-  if(!values.Password){
-    errors.Password = "Password is required"
-  }
-
-  return errors;
-};
+import {FiEye, FiEyeOff} from 'react-icons/fi'
 
 export const UserForm = ({type}) => {
   const router = useRouter();
+  const [typepassword, setTypepassword] = useState('password');
+  const [typepasswordconfirm, setTypepasswordconfirm] = useState('password');
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
-  const [images,setImage] = useState()
-  console.log(images)
-  async function imageUploadData({images}) {
+  const [typechange , settypechange] = useState(true)
+  const [name, setName] = useState("")
+  const [image, setImage] = useState()
+  const [email, setEmail] = useState("")
+  const [phone, setphone] = useState([])
+  const [password,setpassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [passworderror,setpassworderror] = useState("")
+  const [loading, setLoading] = useState(false);
+  const [error,seterror] = useState("")
+  const [active, setActive ] = useState(false)
+  
+  async function imageUploadData({image}) {
     const formData = new FormData();
     let imagesecureUrl = ""
-    formData.append('file', images)
+    formData.append('file', image)
 
     formData.append('upload_preset', 'my_upload')
 
@@ -76,13 +40,15 @@ export const UserForm = ({type}) => {
         
     )
     imagesecureUrl = imageUpload.secure_url
+    console.log(imagesecureUrl)
     return imagesecureUrl
   }
 
-  const handleSubmitForUpdate = async (values) => {
+  const handleSubmit = async (values) => {
     console.log(values);
-    const images = values.image
-    const imageData = await imageUploadData()
+    const image = values.image
+    console.log(image)
+    const imageData = await imageUploadData(image)
     try {
       const data = await axios.post(`../api/CreateUser`,{
         "name": values.name,
@@ -112,155 +78,160 @@ export const UserForm = ({type}) => {
   };
   return (
     <div>
-      <Formik
-        initialValues={initialValues}
-        validate={validateForm}
-        onSubmit={handleSubmitForUpdate}
-      >
-        {({ handleSubmitForUpdate }) => (
-          <form
-            className=""
-            onSubmit={handleSubmitForUpdate}
-          > 
-            <div className="grid grid-cols-10 center py-2 shadow-lg">
-              <div className="col-start-4 col-span-4 px-8 pt-6 pb-8 mb-4 bg-[#8C34E8]">
-                <h3 className="font-poppins text-left text-white font-bold text-4xl lg:tetx-6xl mb-5">
-                  {type}
-                </h3>
+            
+       <form className="max-w-7xl lg:mx-auto" onSubmit={handleSubmit}>
+                <h1 className="text-xl lg:text-4xl font-bold text-center italic">Singin</h1>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-10 px-2">
+                    <div className="relative mb-5">
+                        <input 
+                            id="name" 
+                            type="text" 
+                            required
+                            className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <label 
+                            htmlFor="floating_outlined" 
+                            className="absolute text-md lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+                        >
+                          Name
+                        </label>
+                    </div>
+                    
+                    <div className="relative mb-5">
+                        <input 
+                            id="email" 
+                            type="email" 
+                            required
+                            className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label 
+                            htmlFor="floating_outlined" 
+                           className="absolute text-md lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+                        >
+                            Email
+                        </label>
+                    </div> 
 
-                <div className="mb-4">
-                  <label htmlFor="name" className="block mb-1 text-white">
-                    UserName:
-                    <span className="text-white text-sm ml-1">(required)</span>
-                  </label>
-                  <Field
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full p-2 text-black border border-gray-300"
-                  />
-                  <ErrorMessage
-                    name="name"
-                    component="div"
-                    className="text-red-500"
-                  />
+                    <div className="relative mb-5">
+                        <input 
+                            id="phone" 
+                            type="text" 
+                            required
+                            className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                            value={phone}
+                            onChange={(e) => setphone(e.target.value)}
+                        />
+                        <label 
+                            htmlFor="floating_outlined" 
+                           className="absolute text-md lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+                        >
+                            Phone Number
+                        </label>
+                    </div>  
                 </div>
 
-                <div className="mb-4">
-                  <label htmlFor="email" className="block mb-1 text-white">
-                    Email:
-                    <span className="text-white text-sm ml-1">(required)</span>
-                  </label>
-                  <Field
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full p-2 text-black border border-gray-300"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="text-red-500"
-                  />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-10 px-2">
+                  <div className="relative">
+                    <input 
+                        id="password" 
+                        required
+                        type={typepassword}
+                        className="block w-full px-3 text-sm lg:text-xl text-black dark:text-white bg-white py-4 border-2 border-black rounded-xl appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                        value={password}
+                        onChange={(e) => setpassword(e.target.value)}
+                    />
+                    <div className="absolute right-10 text-sm lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-1/2">
+                        {typepassword==="password"?(
+                            <span className='icon-span' onClick={()=>setTypepassword("text")}>
+                              <FiEye size={30} />
+                            </span>
+                        ):(
+                          <span className='icon-span' onClick={()=>setTypepassword("password")}>
+                            <FiEyeOff size={30} />
+                          </span>
+                        )}
+                    </div>
+                    <label 
+                        htmlFor="floating_outlined" 
+                        className="absolute text-sm lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+                    >
+                        Password
+                    </label>
+                  </div>
+
+                  <div className="relative">
+                    <input 
+                      id="ConfirmPassword" 
+                      required
+                      type={typepasswordconfirm}
+                      className="block w-full px-3 text-sm lg:text-xl text-black dark:text-white bg-white py-4 border-2 border-black rounded-xl appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                    <div className="absolute right-10 text-sm lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-1/2">
+                      {typepasswordconfirm==="password"?(
+                          <span className='icon-span' onClick={()=>setTypepasswordconfirm("text")}>
+                            <FiEye size={30} />
+                          </span>
+                      ):(
+                          <span className='icon-span' onClick={()=>setTypepasswordconfirm("password")}>
+                            <FiEyeOff size={30} />
+                          </span>
+                      )}
+                    </div>
+                    <label 
+                        htmlFor="floating_outlined" 
+                        className="absolute text-sm lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+                    >
+                        Confirm Password
+                    </label>
+                  </div>
                 </div>
 
-                <div className="mb-4">
-                  <label htmlFor="phone" className="block mb-1 text-white">
-                    Phone:
-                    <span className="text-white text-sm ml-1">(required)</span>
-                  </label>
-                  <Field
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    className="w-full p-2 text-black border border-gray-300"
-                  />
-                  <ErrorMessage
-                    name="phone"
-                    component="div"
-                    className="text-red-500"
-                  />
+                <div className="flex items-center justify-center w-full px-2">
+                    <label 
+                        htmlFor="dropzone-file" 
+                        className="flex flex-col items-center justify-center w-full h-64 border-2 border-black border rounded-lg cursor-pointer bg-white dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-black dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    >
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                            <p className="text-sm lg:text-lg text-black mb-5">Upload Company Image</p>
+                            <svg aria-hidden="true" className="w-10 h-10 mb-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                            <p className="mb-2 text-xs lg:text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                        </div>
+                        <input id="dropzone-file" type="file" className="hidden" onChange={(e) => setImage(e.target.files[0])} />
+                    </label>
+                </div>
+                
+
+                <div className={image == null ? "hidden" : "flex justify-center items-center mb-10"}>
+                    <Image 
+                        src={image == null ? "/images/bgImage1.avif" :URL.createObjectURL(image)} 
+                        width={500} height={200} 
+                        alt="image that will be displayed" 
+                        className="w-full"
+                    />
                 </div>
 
-                <div className="mb-4">
-                  <label htmlFor="Password" className="block mb-1 text-white">
-                    Password:
-                    <span className="text-white text-sm ml-1">(required)</span>
-                  </label>
-                  <Field
-                    type="Password"
-                    id="Password"
-                    name="Password"
-                    className="w-full p-2 text-black border border-gray-300"
-                  />
-                  <ErrorMessage
-                    name="Password"
-                    component="div"
-                    className="text-red-500"
-                  />
+                <div className="my-5 flex flex-col lg:flex-row justify-between px-5">
+                    <h1 className="text-red-600 dark:text-red-400 text-md lg:text-2xl font-bold text-left mb-5 lg:mb-0">
+                        {error}
+                    </h1>
+
+                    <button 
+                        disabled={loading}
+                        className={`mx-2 mb-10 float-right text-white font-medium text-md lg:text-xl rounded-lg px-4 py-4 text-center inline-flex items-center
+                            ${loading ? "bg-gray-200" : "bg-[#009688] hover:bg-[#009688] focus:ring-4 focus:ring-[#009688]" }`}
+                    >
+                        Submit
+                    </button>
                 </div>
 
-                <div className="mb-4">
-                  <label htmlFor="ConfirmPassword" className="block mb-1 text-white">
-                    Confirm Password:
-                    <span className="text-white text-sm ml-1">(required)</span>
-                  </label>
-                  <Field
-                    type="Password"
-                    id="ConfirmPassword"
-                    name="ConfirmPassword"
-                    className="w-full p-2 text-black border border-gray-300"
-                  />
-                  <ErrorMessage
-                    name="ConfirmPassword"
-                    component="div"
-                    className="text-red-500"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="image" className="block mb-1 text-white">
-                    Image:
-                    <span className="text-white text-sm ml-1">(required)</span>
-                  </label>
-                  <Field
-                    type="file"
-                    id="image"
-                    name="image"
-                    onChange={(e) => setImage(e.target.files[0])}
-                    className="w-full p-2 text-black border border-gray-300"
-                  />
-                  <ErrorMessage
-                    name="image"
-                    component="div"
-                    className="text-red-500"
-                  />
-                </div>
-
-                <div className={images == null ? "hidden" : "flex justify-center items-center mb-10"}>
-                  <Image 
-                      src={images == null ? "/images/bgImage1.avif" :URL.createObjectURL(images)} 
-                      width={200} height={100} 
-                      alt="image that will be displayed" 
-                      className=""
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="bg-[#17c294] w-28 text-white paragraph-fonts py-2 px-4 mb-8 md:mb-0 md:py-4 md:px-8
-                               shadow-black items-center rounded-md justify-center shadow-md hover:scale-105 duration-300"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </form>
-        )}
-      </Formik>
-
-      
-
+               
+            </form>
       <ReactModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

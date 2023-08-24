@@ -4,13 +4,14 @@ import bcrypt from "bcryptjs";
 import { StatusCodes } from "http-status-codes";
 
 export default async function handleadduser(req, res){
-	const {name ,email ,phone ,Password } = req.body;
-	console.log(name)
+	const {name ,email ,phone ,Password,Image } = req.body;
+	console.log(Image)
 	const data = await prisma.User.create({
 		data:{
 			UserName:name,
 			email:email,
 			phonenumber:phone,
+			Image:Image,
 			Password:bcrypt.hashSync(Password, 8),
 		},
 	});

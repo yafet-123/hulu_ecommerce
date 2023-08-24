@@ -22,7 +22,7 @@ model User {
   UserName      String        @unique @db.VarChar(255)
   phonenumber   String        @unique @db.VarChar(255)
   email         String?       @unique @db.VarChar(255)
-  Image         String
+  Image         String?       @db.VarChar(255)
   resetToken    String?       @unique @db.VarChar(255)
   Password      String        @db.VarChar(255)
   role          String?       @db.VarChar(255)
