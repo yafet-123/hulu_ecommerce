@@ -6,60 +6,18 @@ import Link from "next/link";
 import ReactModal from "react-modal";
 import { usePathname, useRouter } from "next/router";
 
-const initialValues = {
-  name: "",
-  Description: "",
-  price: "",
-  Image: "",
-  profile:"",
-  Condition:"",
-};
-
-const validateForm = (values) => {
-  const errors = {};
-
-  if (!values.name) {
-    errors.name = "Name is required";
-  }
-
-  if (!values.Description) {
-    errors.Description = "Description is required";
-  }
-
-  if (!values.price) {
-    errors.price = "price is required";
-  }
-
-  if (!values.Image) {
-    errors.Image = "Image is required";
-  }
-
-  if (!values.profile) {
-    errors.profile = "profile is required";
-  }
-
-  if (!values.Condition) {
-    errors.Condition = "Condition is required";
-  }
-
-  return errors;
-};
-
 export const ItemForm = () => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
-  const socialMediaLinks = [
-    {
-      id: "https://www.linkedin.com/in/helen-zeray-789b89267",
-      path: <BsLinkedin size={30} color="black" />,
-    },
-    {
-      id: "https://instagram.com/helenzeray1?igshid=ZGUzMzM3NWJiOQ==",
-      path: <BsInstagram size={30} color="black" />,
-    },
-  ];
-
+  const [name, setName] = useState("")
+  const [image, setImage] = useState()
+  const [Description, setDescription] = useState("")
+  const [price, setprice] = useState()
+  const [Condition, setCondition] = useState()
+  const [profile, setProfile] = useState()
+  const [loading, setLoading] = useState(false);
+  const [error,seterror] = useState("")
   async function imageUploadData(values) {
     const formData = new FormData();
     let imagesecureUrl = ""
@@ -109,142 +67,143 @@ export const ItemForm = () => {
   const closeModalone = () => {
     setModalIsOpenone(false);
   };
+  async function addItem(e){
+    e.preventDefault()
+    handleSubmit()
+  }
+
   return (
     <div className="w-full flex flex-col items-center space-y-6 px-5 lg:px-52">
-      <Formik
-        initialValues={initialValues}
-        validate={validateForm}
-        onSubmit={handleSubmit}
-      >
-        {({ handleSubmit }) => (
-          <form
-            className="flex flex-col px-2 lg:px-10 w-full"
-            onSubmit={handleSubmit}
+      <form className="max-w-7xl lg:mx-auto" onSubmit={addItem}>
+        <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
+           Create and share amazing products with the world, and let your imagination run wild
+        </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-10 px-2">
+          <div className="relative mb-5">
+              <input 
+                  id="name" 
+                  type="text" 
+                  required
+                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+              />
+              <label 
+                  htmlFor="floating_outlined" 
+                  className="absolute text-md lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+              >
+                Name
+              </label>
+          </div>
+                    
+          <div className="relative mb-5">
+              <input 
+                  id="price" 
+                  type="text" 
+                  required
+                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                  value={price}
+                  onChange={(e) => setprice(e.target.value)}
+              />
+              <label 
+                  htmlFor="floating_outlined" 
+                 className="absolute text-md lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+              >
+                  Price
+              </label>
+          </div>  
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-10 px-2">
+          <div className="relative mb-5">
+              <input 
+                  id="Condition" 
+                  type="text" 
+                  required
+                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                  value={Condition}
+                  onChange={(e) => setCondition(e.target.value)}
+              />
+              <label 
+                  htmlFor="floating_outlined" 
+                 className="absolute text-md lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+              >
+                  Condition
+              </label>
+          </div>
+
+          <div className="relative mb-5">
+              <input 
+                  id="profile" 
+                  type="text" 
+                  required
+                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                  value={profile}
+                  onChange={(e) => setProfile(e.target.value)}
+              />
+              <label 
+                  htmlFor="floating_outlined" 
+                 className="absolute text-md lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+              >
+                  profile
+              </label>
+          </div>  
+        </div>
+
+        <div className="relative flex-1 my-10">
+          <textarea 
+              id="Description" 
+              rows="7" 
+              cols="50"
+              required
+              className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+              value={Description}
+              onChange={(e) => setDescription(e.target.value)}
+          />
+          <label 
+              htmlFor="floating_outlined" 
+              className="absolute text-md lg:text-xl text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[10%] peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
           >
-            <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
-              Create and share amazing products with the world, and let your imagination run wild
-            </h3>
+              Description
+          </label>
+        </div> 
 
-            <div className="mb-4">
-              <label htmlFor="name" className="block mb-1">
-                Name:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="text"
-                id="name"
-                name="name"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="name"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
+        <div className="flex items-center justify-center w-full px-2">
+          <label 
+              htmlFor="dropzone-file" 
+              className="flex flex-col items-center justify-center w-full h-64 border-2 border-black border rounded-lg cursor-pointer bg-white dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-black dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          >
+              <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                  <p className="text-sm lg:text-lg text-black mb-5">Upload Profile Image</p>
+                  <svg aria-hidden="true" className="w-10 h-10 mb-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                  <p className="mb-2 text-xs lg:text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+              </div>
+              <input id="dropzone-file" type="file" className="hidden" onChange={(e) => setImage(e.target.files[0])} />
+          </label>
+        </div>     
 
-            <div className="mb-4">
-              <label htmlFor="price" className="block mb-1">
-                Price:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="text"
-                id="price"
-                name="price"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="price"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
+        <div className={image == null ? "hidden" : "flex justify-center items-center my-10"}>
+            <Image 
+                src={image == null ? "/images/bgImage1.avif" :URL.createObjectURL(image)} 
+                width={300} height={100} 
+                alt="image that will be displayed" 
+                className=""
+            />
+        </div>
 
-            <div className="mb-4">
-              <label htmlFor="profile" className="block mb-1">
-                Profile:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="text"
-                id="profile"
-                name="profile"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="profile"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="Condition" className="block mb-1">
-                Condition:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="text"
-                id="Condition"
-                name="Condition"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="Condition"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="Description" className="block mb-1">
-                Description:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="textarea"
-                id="Description"
-                name="Description"
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="Description"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="Image" className="block mb-1">
-                Image:
-                <span className="text-gray-500 text-sm ml-1">(required)</span>
-              </label>
-              <Field
-                type="file"
-                id="Image"
-                name="Image"
-                onChange={(e) => setImage(e.target.files[0])} 
-                className="w-full p-2 text-black border border-gray-300"
-              />
-              <ErrorMessage
-                name="Image"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="bg-[#17c294] w-28 text-white paragraph-fonts py-2 px-4 mb-8 md:mb-0 md:py-4 md:px-8
-                           shadow-black items-center rounded-md justify-center shadow-md hover:scale-105 duration-300"
-            >
+        <div className="my-5 flex flex-col lg:flex-row justify-between px-5">
+          <h1 className="text-red-600 dark:text-red-400 text-md lg:text-2xl font-bold text-left mb-5 lg:mb-0">
+              {error}
+          </h1>
+          <button 
+              disabled={loading}
+              className={`mx-2 mb-10 float-right text-white font-medium text-md lg:text-xl rounded-lg px-4 py-4 text-center inline-flex items-center
+                  ${loading ? "bg-gray-200" : "bg-[#009688] hover:bg-[#009688] focus:ring-4 focus:ring-[#009688]" }`}
+          >
               Submit
-            </button>
-          </form>
-        )}
-      </Formik>
-
+          </button>
+        </div>
+      </form>
       <ReactModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
