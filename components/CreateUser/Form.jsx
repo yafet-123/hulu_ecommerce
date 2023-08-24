@@ -25,7 +25,7 @@ export const UserForm = ({type}) => {
   const [error,seterror] = useState("")
   const [active, setActive ] = useState(false)
   
-  async function imageUploadData({image}) {
+  async function imageUploadData() {
     const formData = new FormData();
     let imagesecureUrl = ""
     formData.append('file', image)
@@ -44,28 +44,32 @@ export const UserForm = ({type}) => {
     return imagesecureUrl
   }
 
-  const handleSubmit = async (values) => {
-    console.log(values);
-    const image = values.image
-    console.log(image)
+  const handleSubmit = async () => {
     const imageData = await imageUploadData(image)
-    try {
+    if(confirmPassword === password){
       const data = await axios.post(`../api/CreateUser`,{
-        "name": values.name,
-        "email": values.email,
+        "name": name,
+        "email": email,
         "Image": imageData,
-        "phone": values.phone,
-        "Password": values.Password
+        "phone": phone,
+        "Password": password
       }).then(function (response) {
         console.log(response.data);
         setModalIsOpen(true);
       }).catch(function (error) {
         setModalIsOpenone(true);
       });
-    } catch (error) {
-      console.error("Error:", error);
+    }else{
+      seterror("")
+      setpassworderror("Password and confirm password should be same.")
+      setLoading(false)
     }
   };
+
+  async function addUser(e){
+    e.preventDefault()
+    handleSubmit()
+  }
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -79,7 +83,7 @@ export const UserForm = ({type}) => {
   return (
     <div>
             
-       <form className="max-w-7xl lg:mx-auto" onSubmit={handleSubmit}>
+       <form className="max-w-7xl lg:mx-auto" onSubmit={addUser}>
                 <h1 className="text-xl lg:text-4xl font-bold text-center italic">Singin</h1>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-10 px-2">
                     <div className="relative mb-5">
@@ -198,7 +202,7 @@ export const UserForm = ({type}) => {
                         className="flex flex-col items-center justify-center w-full h-64 border-2 border-black border rounded-lg cursor-pointer bg-white dark:hover:bg-bray-800 hover:bg-gray-100 dark:border-black dark:hover:border-gray-500 dark:hover:bg-gray-600"
                     >
                         <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <p className="text-sm lg:text-lg text-black mb-5">Upload Company Image</p>
+                            <p className="text-sm lg:text-lg text-black mb-5">Upload Profile Image</p>
                             <svg aria-hidden="true" className="w-10 h-10 mb-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                             <p className="mb-2 text-xs lg:text-sm text-black"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                         </div>
@@ -207,12 +211,12 @@ export const UserForm = ({type}) => {
                 </div>
                 
 
-                <div className={image == null ? "hidden" : "flex justify-center items-center mb-10"}>
+                <div className={image == null ? "hidden" : "flex justify-center items-center my-10"}>
                     <Image 
                         src={image == null ? "/images/bgImage1.avif" :URL.createObjectURL(image)} 
-                        width={500} height={200} 
+                        width={300} height={100} 
                         alt="image that will be displayed" 
-                        className="w-full"
+                        className=""
                     />
                 </div>
 
@@ -229,7 +233,6 @@ export const UserForm = ({type}) => {
                         Submit
                     </button>
                 </div>
-
                
             </form>
       <ReactModal

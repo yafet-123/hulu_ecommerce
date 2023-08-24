@@ -42,6 +42,7 @@ export default NextAuth({
             if (user) {
                 token.userId = user.userId;
                 token.accessToken = user.token;
+                token.Image = user.Image;
                 token.role = user.role;
             }
             return token;
@@ -51,6 +52,7 @@ export default NextAuth({
             session.user.accessToken = token.accessToken;
             session.user.refreshToken = token.refreshToken;
             session.user.user_id = token.userId;
+            session.user.Image = token.Image;
             session.user.role = token.role;
             session.user.accessTokenExpires = token.accessTokenExpires;
             

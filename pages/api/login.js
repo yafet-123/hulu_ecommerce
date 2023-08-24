@@ -53,6 +53,7 @@ export default async function handleaddlogin(req, res){
     	name: user.UserName,
     	phone:user.phonenumber,
     	role:user.role,
+    	Image:user.Image,
     	email:user.email,
     	token
   	});

@@ -58,7 +58,7 @@ export const Navbar = () => {
     })
   };
 
-
+  console.log(session)
 
   return (
     <nav 
@@ -115,7 +115,7 @@ export const Navbar = () => {
                       src={session?.user.Image}
                       width={37}
                       height={37}
-                      className='rounded-full'
+                      className='h-[37px] bg-cover rounded-full'
                       alt='profile'
                       onClick={() => setToggleDropdown(!toggleDropdown)}
                     />
