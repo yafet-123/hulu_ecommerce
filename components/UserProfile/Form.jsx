@@ -74,7 +74,7 @@ export const ItemForm = () => {
 
   return (
     <div className="w-full flex flex-col items-center space-y-6 px-5 lg:px-52">
-      <form className="max-w-7xl lg:mx-auto" onSubmit={addItem}>
+      <form className="max-w-7xl lg:mx-auto bg-gray-600" onSubmit={addItem}>
         <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
            Create and share amazing products with the world, and let your imagination run wild
         </h3>

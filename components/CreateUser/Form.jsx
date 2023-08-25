@@ -83,8 +83,8 @@ export const UserForm = ({type}) => {
   return (
     <div>
             
-       <form className="max-w-7xl lg:mx-auto" onSubmit={addUser}>
-                <h1 className="text-xl lg:text-4xl font-bold text-center italic">Singin</h1>
+       <form className="max-w-7xl lg:mx-auto bg-gray-200 p-5 rounded-lg" onSubmit={addUser}>
+                <h1 className="text-xl lg:text-4xl font-bold tracking-wide text-center italic">SingIn</h1>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-10 px-2">
                     <div className="relative mb-5">
                         <input 
