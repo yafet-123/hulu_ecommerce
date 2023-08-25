@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function Display({ sale }) {
   const [paddingTop, setPaddingTop] = useState("0");
   const router = useRouter()
+  console.log(sale)
   const handleClick = (e) => {
     e.preventDefault()
     router.push('/profile')
@@ -14,7 +15,7 @@ export default function Display({ sale }) {
     <Link href="/Item/Display" className="flex flex-col justify-between lg:pb-10">
       <div className="w-full !h-[15rem] relative mb-5">
         <Image
-          src={sale.Image}
+          src={sale.Image[0]}
           fill
           objectFit="contain"
           onLoad={({ target }) => {

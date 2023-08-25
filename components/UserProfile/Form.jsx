@@ -5,6 +5,7 @@ import axios from 'axios';
 import Link from "next/link";
 import ReactModal from "react-modal";
 import { usePathname, useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 export const ItemForm = () => {
   const router = useRouter();
@@ -18,10 +19,13 @@ export const ItemForm = () => {
   const [profile, setProfile] = useState()
   const [loading, setLoading] = useState(false);
   const [error,seterror] = useState("")
-  async function imageUploadData(values) {
+  const { status, data } = useSession();
+  const UserData = data?.user.user_id;
+  const createImages = []
+  async function imageUploadData() {
     const formData = new FormData();
     let imagesecureUrl = ""
-    formData.append('file', values.Image)
+    formData.append('file', image)
 
     formData.append('upload_preset', 'my_upload')
 
@@ -33,19 +37,25 @@ export const ItemForm = () => {
         
     )
     imagesecureUrl = imageUpload.secure_url
+    console.log(imagesecureUrl)
     return imagesecureUrl
   }
-  const handleSubmit = async (values) => {
-    console.log(values);
+  const handleSubmit = async () => {
     const imageData = await imageUploadData()
+
+      createImages.push(
+        imageData
+      )
+      console.log(UserData)
     try {
-      const data = await axios.post(`../api/Item/Add`,{
-        "name": values.name,
-        "Description": values.Description,
-        "price": values.price,
-        "Image": imageData,
-        "profile": values.profile,
-        "Condition": values.Condition
+      const data = await axios.post(`../../api/Item/Add`,{
+        "name": name,
+        "Description": Description,
+        "price": price,
+        "Image": createImages,
+        "profile": profile,
+        "Condition": Condition,
+        "user_id": UserData
       }).then(function (response) {
         console.log(response.data);
         setModalIsOpen(true);
@@ -61,7 +71,7 @@ export const ItemForm = () => {
   const closeModal = () => {
     setModalIsOpen(false);
     console.log("contact");
-    router.reload()
+    router.push('/')
   };
 
   const closeModalone = () => {
@@ -74,7 +84,7 @@ export const ItemForm = () => {
 
   return (
     <div className="w-full flex flex-col items-center space-y-6 px-5 lg:px-52">
-      <form className="max-w-7xl lg:mx-auto bg-gray-600" onSubmit={addItem}>
+      <form className="max-w-7xl lg:mx-auto bg-gray-200 p-5 rounded-lg" onSubmit={addItem}>
         <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
            Create and share amazing products with the world, and let your imagination run wild
         </h3>
