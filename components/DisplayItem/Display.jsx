@@ -35,7 +35,7 @@ export default function Display({item}) {
             alt="imagea of the items"
           />
         </div>
-        <div className="flex flex-wrap flex-row ">
+        {/*<div className="flex flex-wrap flex-row ">
           {Images.map((data, index) => (
             <Image
               key={index}
@@ -46,7 +46,7 @@ export default function Display({item}) {
               alt="imagea of the items"
             />
           ))}
-        </div>
+        </div>*/}
       </div>
 
       <div className="px-5 w-[40%]">
