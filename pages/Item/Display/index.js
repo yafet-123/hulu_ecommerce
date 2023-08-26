@@ -5,8 +5,8 @@ import List from '../../../components/Home/List';
 import Display from "../../../components/DisplayItem/Display";
 import { prisma } from '../../../util/db.server.js'
 
-export async function getServerSideProps({context}){
-  const {req,res,query} = context
+export async function getServerSideProps(context){
+  const {params,req,res,query} = context
   const id = query.id
   const items = await prisma.Items.findMany({
     orderBy : {
@@ -26,14 +26,12 @@ export async function getServerSideProps({context}){
     where:{
       items_id: Number(id),
     },
-    orderBy : {
-      CreatedDate:'desc'
-    },
     include:{
       User:{
         select:{
           UserName:true,
-          Image:true
+          Image:true,
+          phonenumber:true
         }
       },
     }
@@ -53,7 +51,8 @@ export async function getServerSideProps({context}){
 
   return{
     props:{
-      AllItems:JSON.parse(JSON.stringify(AllItems))
+      AllItems:JSON.parse(JSON.stringify(AllItems)),
+      item:JSON.parse(JSON.stringify(item))
     }
   }
 }

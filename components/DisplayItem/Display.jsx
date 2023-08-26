@@ -29,7 +29,7 @@ export default function Display({item}) {
       <div className="w-[60%] px-5">
         <div className="w-full !h-[30rem] relative mb-5">
           <Image
-            src={Images[0]}
+            src={item.Image[0]}
             fill
             className="bg-cover w-full h-full"
             alt="imagea of the items"
@@ -54,36 +54,22 @@ export default function Display({item}) {
           {item.name}
         </h1>
         <p className="flex font-poppins font-semibold text-lg lg:text-2xl font-normal text-left text-[#505e66] my-3">
-          30000 <span className="px-1">ETB</span>
+          {item.price} <span className="px-1">ETB</span>
         </p>
         <div className="flex flex-col mb-5">
           <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-2xl pb-5">Seller</h1>
           <h1 className="text-black text-left font-poppins font-normal text-lg lg:text-xl pb-5 pl-5">
-            Yafet Addisu
+            {item.User.UserName}
           </h1>
           <p className="text-black flex font-poppins font-normal text-lg lg:text-xl font-normal text-left pl-5">
-            +251934781038
+            {item.User.phonenumber}
           </p>
         </div>
 
         <div className="flex flex-col">
           <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-2xl pb-5">Descreption</h1>
           <p className="text-black flex font-poppins font-normal text-lg lg:text-xl font-normal text-left pl-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. 
-            Nunc posuere purus rhoncus pulvinar aliquam. Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis. 
-            Donec a dui et dui fringilla consectetur id nec massa. Aliquam erat volutpat. Sed ut dui ut lacus dictum fermentum vel tincidunt neque. 
-            Sed sed lacinia lectus. Duis sit amet sodales felis. Duis nunc eros, mattis at dui ac, convallis semper risus. 
-            In adipiscing ultrices tellus, in suscipit massa vehicula eu.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. 
-            Nunc posuere purus rhoncus pulvinar aliquam. Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis. 
-            Donec a dui et dui fringilla consectetur id nec massa. Aliquam erat volutpat. Sed ut dui ut lacus dictum fermentum vel tincidunt neque. 
-            Sed sed lacinia lectus. Duis sit amet sodales felis. Duis nunc eros, mattis at dui ac, convallis semper risus. 
-            In adipiscing ultrices tellus, in suscipit massa vehicula eu.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. 
-            Nunc posuere purus rhoncus pulvinar aliquam. Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis. 
-            Donec a dui et dui fringilla consectetur id nec massa. Aliquam erat volutpat. Sed ut dui ut lacus dictum fermentum vel tincidunt neque. 
-            Sed sed lacinia lectus. Duis sit amet sodales felis. Duis nunc eros, mattis at dui ac, convallis semper risus. 
-            In adipiscing ultrices tellus, in suscipit massa vehicula eu.
+            {item.Description}
           </p>
         </div>
       </div>
