@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from 'next/router'
 import { useState } from "react";
 
-export default function Display() {
+export default function Display({item}) {
   const [paddingTop, setPaddingTop] = useState("0");
   const router = useRouter()
   const handleClick = (e) => {
@@ -51,7 +51,7 @@ export default function Display() {
 
       <div className="px-5 w-[40%]">
         <h1 className="text-black text-left font-poppins font-bold text-xl lg:text-3xl text-[#D0DFFF] ">
-          Iphone 14 Pro Max
+          {item.name}
         </h1>
         <p className="flex font-poppins font-semibold text-lg lg:text-2xl font-normal text-left text-[#505e66] my-3">
           30000 <span className="px-1">ETB</span>

@@ -13,7 +13,8 @@ export async function getStaticProps(){
     include:{
       User:{
         select:{
-          UserName:true
+          UserName:true,
+          Image:true
         }
       },
     }
@@ -39,6 +40,7 @@ export async function getStaticProps(){
     price:data.price,
     Image:data.Image,
     profile:data.profile,
+    user:data.User,
     Condition:data.Condition,
     CreatedDate:data.CreatedDate
   }))

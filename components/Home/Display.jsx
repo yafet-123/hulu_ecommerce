@@ -12,7 +12,12 @@ export default function Display({ sale }) {
     router.push('/profile')
   }
   return (
-    <Link href="/Item/Display" className="flex flex-col justify-between lg:pb-10">
+    <Link 
+      href={{
+        pathname: '/Item/Display',
+        query: { id: sale.items_id },
+      }}
+      className="flex flex-col justify-between lg:pb-10">
       <div className="w-full !h-[15rem] relative mb-5">
         <Image
           src={sale.Image[0]}
@@ -36,15 +41,14 @@ export default function Display({ sale }) {
         </div>
         <button onClick={handleClick} className="flex flex-col items-center mr-5">
           <Image
-            src={sale.profile}
-            alt="Item images"
-            priority
+            src={sale.user.Image}
             width={40}
             height={40}
-            className="h-[40px] bg-cover rounded-full"
+            className="!h-[40px] !max-w-[40px] bg-cover rounded-full"
+            alt="Item images"
           />
 
-          <p className="flex font-poppins text-md lg:text-lg font-normal text-left text-[#505e66] my-2 w-full mr-5">
+          <p className="flex font-poppins text-md lg:text-lg font-normal text-left text-[#505e66] my-2 mr-5">
             {sale.posted}
           </p>
         </button>
