@@ -14,7 +14,8 @@ export async function getStaticProps(){
       User:{
         select:{
           UserName:true,
-          Image:true
+          Image:true,
+          user_id:true
         }
       },
     }
