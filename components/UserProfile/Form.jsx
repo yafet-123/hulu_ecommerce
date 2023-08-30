@@ -41,6 +41,7 @@ export const ItemForm = () => {
     return imagesecureUrl
   }
   const handleSubmit = async () => {
+    setloading(true)
     const imageData = await imageUploadData()
 
       createImages.push(

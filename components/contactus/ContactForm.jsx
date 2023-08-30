@@ -78,7 +78,6 @@ export const ContactForm = () => {
         setModalIsOpen(true);
       }).catch(function (error) {
         setModalIsOpenone(true);
-        setLoading(false)
       });
     } catch (error) {
       console.error("Error:", error);

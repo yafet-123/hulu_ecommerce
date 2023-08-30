@@ -45,6 +45,7 @@ export const UserForm = ({type}) => {
   }
 
   const handleSubmit = async () => {
+    setLoading(true)
     const imageData = await imageUploadData(image)
     if(confirmPassword === password){
       const data = await axios.post(`../api/CreateUser`,{
