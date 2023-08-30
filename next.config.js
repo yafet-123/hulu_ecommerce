@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     // unoptimized: true,
     domains: [
-      'res.cloudinary.com','lh3.googleusercontent.com'
+      'res.cloudinary.com','lh3.googleusercontent.com','petapixel.com'
     ],
   },
 }
