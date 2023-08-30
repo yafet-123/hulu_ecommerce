@@ -20,14 +20,35 @@ export async function getServerSideProps(context){
     where:{
       user_id: Number(id),
     },
+    include:{
+      User:{
+        select:{
+          UserName:true,
+          Image:true,
+          user_id:true
+        }
+      },
+    }
   });
 
+  const AllItems = items.map((data)=>({
+    items_id:data.items_id,
+    name:data.name,
+    Description:data.Description,
+    price:data.price,
+    Image:data.Image,
+    profile:data.profile,
+    user:data.User,
+    Condition:data.Condition,
+    CreatedDate:data.CreatedDate
+  }))
+  
   console.log(data)
 
   return{
     props:{
       user:JSON.parse(JSON.stringify(data)),
-      items:JSON.parse(JSON.stringify(items)),
+      items:JSON.parse(JSON.stringify(AllItems)),
     }
   }
 }

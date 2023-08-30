@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
- 
+import { useSession } from "next-auth/react";
+
 export default function Display({ sale }) {
   const [paddingTop, setPaddingTop] = useState("0");
+  const { status, data: session } = useSession();
   return (
     <Link href="/ " className="flex flex-col justify-between lg:pb-10">
       <div className="w-full !h-[20rem] relative mb-5">
@@ -33,6 +35,23 @@ export default function Display({ sale }) {
           </p>
         </div>
       </div>
+
+      {session?.user.id === sale.user_id && pathName === "user/profile" && (
+        <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
+          <p
+            className='font-inter text-sm green_gradient cursor-pointer'
+            
+          >
+            Edit
+          </p>
+          <p
+            className='font-inter text-sm orange_gradient cursor-pointer'
+            
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </Link>
   );
 }
