@@ -4,6 +4,7 @@ import { MainHeader } from '../components/common/MainHeader';
 import List from '../components/Home/List';
 import ListCategories from "../components/Categories/List";
 import { prisma } from '../util/db.server.js'
+import { useSession } from "next-auth/react";
 
 export async function getStaticProps(){
   const items = await prisma.Items.findMany({
@@ -55,12 +56,13 @@ export async function getStaticProps(){
 }
 
 export default function Home({AllItems, categories}) {
+  const { status, data: session } = useSession();
   return (
     <div className="flex flex-col w-full h-full py-0 pt-32">
       <MainHeader title="Hulu Media Ecommerce : Home" />
       <div className="flex flex-col-reverse lg:flex-row px-2 lg:px-36">
         <ListCategories categories={categories} />
-        <List AllItems={AllItems} />
+        <List AllItems={AllItems} session={session} />
       </div>
     </div>
   )

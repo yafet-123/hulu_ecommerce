@@ -22,6 +22,8 @@ export async function getServerSideProps(context){
     },
   });
 
+  console.log(data)
+
   return{
     props:{
       user:JSON.parse(JSON.stringify(data)),

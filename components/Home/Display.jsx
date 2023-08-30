@@ -3,13 +3,16 @@ import Link from "next/link";
 import { useRouter } from 'next/router'
 import { useState } from "react";
 
-export default function Display({ sale }) {
+export default function Display({ sale, session }) {
   const [paddingTop, setPaddingTop] = useState("0");
   const router = useRouter()
   console.log(sale)
   const handleClick = (e) => {
     e.preventDefault()
-    router.push('/profile')
+    router.push({
+      pathname: '/profile',
+      query: { user_id: sale.user.user_id },
+    })
   }
   return (
     <Link 

@@ -1,5 +1,5 @@
 import Display from './Display'
-export default function List({AllItems}) {
+export default function List({AllItems,session}) {
   // const AllItems = [
   //   {
   //     "Image" : "https://res.cloudinary.com/df7hlpjcj/image/upload/v1690976469/Ecommerce/2ee00c23-3b7e-45e4-b3f5-483a8f55c718_hi6xi4.jpg",
@@ -47,7 +47,7 @@ export default function List({AllItems}) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5 h-full">
       {AllItems.map((data, index) => (
-        <Display key={index} sale={data} />
+        <Display key={index} sale={data} session={session} />
       ))}
     </div>
   );
