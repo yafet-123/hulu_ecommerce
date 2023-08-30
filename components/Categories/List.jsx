@@ -8,15 +8,15 @@ export default function ListCategories({categories}) {
   const babykids = []
   const homekitchen = []
   for (const Categorie of categories) {
-    if (Categorie.type === "Shoes , clothes and accessories") {
+    if (Categorie.SuperCategory === "Shoes , clothes and accessories") {
       shoes.push(Categorie);
-    } else if (Categorie.type === "Electronics") {
+    } else if (Categorie.SuperCategory === "Electronics") {
       electronics.push(Categorie);
-    } else if (Categorie.type === "Health & Beauty") {
+    } else if (Categorie.SuperCategory === "Health & Beauty") {
       healthbeauty.push(Categorie);
-    } else if (Categorie.type === "Baby & kids") {
+    } else if (Categorie.SuperCategory === "Baby & kids") {
       babykids.push(Categorie);
-    } else if (Categorie.type === "Home & kitchen") {
+    } else if (Categorie.SuperCategory === "Home & kitchen") {
       homekitchen.push(Categorie);
     }
   }
