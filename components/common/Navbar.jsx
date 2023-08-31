@@ -14,7 +14,6 @@ export const Navbar = () => {
   const router = useRouter();
   const NavLinks = [
     { path: "/", name: "Home" },
-    { path: "/Categories", name: "Categories" },
     { path: "/contact", name: "Contact" }
   ];
 

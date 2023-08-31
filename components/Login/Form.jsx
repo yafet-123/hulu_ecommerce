@@ -59,7 +59,7 @@ export function LoginForm({ csrfToken }) {
                                         />
                                     </label>
 
-                                    <div className="text-red-600 text-sm">
+                                    <div className="text-black text-sm">
                                         <ErrorMessage name="email" />
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@ export function LoginForm({ csrfToken }) {
                                         />
                                     </label>
 
-                                    <div className="text-red-600 text-sm">
+                                    <div className="text-black text-sm">
                                         <ErrorMessage name="password" />
                                     </div>
                                 </div>
