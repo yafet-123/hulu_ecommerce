@@ -6,7 +6,7 @@ export default function Display({ categorie }) {
   return (
     <Link 
       href={{
-        pathname: '/categorie',
+        pathname: '/categories',
         query: { name: categorie.CategoryName },
       }} 
       className="flex flex-col justify-between pb-5"
