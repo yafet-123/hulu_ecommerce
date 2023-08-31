@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { MainHeader } from '../../components/common/MainHeader';
 import List from '../../components/Home/List';
 import ListCategories from "../../components/Categories/List";
-import { prisma } from '../util/db.server.js'
+import { prisma } from '../../util/db.server.js'
 import { useSession } from "next-auth/react";
 
 export async function getStaticProps(context){
