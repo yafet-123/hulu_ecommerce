@@ -8,24 +8,39 @@ import { useSession } from "next-auth/react";
 
 export async function getServerSideProps(context){
   const {params,req,res,query} = context
-  const name = query.name
-  const items = await prisma.Items.findMany({
-    where:{
-      CategoryName: name,
-    },
-    orderBy : {
-      CreatedDate:'desc'
-    },
-    include:{
-      User:{
-        select:{
-          UserName:true,
-          Image:true,
-          user_id:true
-        }
+  const caname = query.name
+
+  const itemsbycategory = await prisma.Items.findMany({
+      orderBy : {
+          items_id:'desc'
       },
-    }
-  });
+      where:{
+        ItemsCategory:{
+          some: {
+            Category:{
+              CategoryName: caname
+            }
+          }
+        }   
+      },
+      include:{
+          User:{
+            select:{
+                UserName:true
+            }
+          },
+          ItemsCategory:{
+            include:{
+                Category:{
+                        select:{
+                          category_id:true,
+                          CategoryName:true
+                  }
+                }
+            }
+          },
+      } 
+    });
 
   const categories = await prisma.Category.findMany({
     orderBy : {
@@ -40,7 +55,7 @@ export async function getServerSideProps(context){
     }
   });
 
-  const AllItems = items.map((data)=>({
+  const AllItems = itemsbycategory.map((data)=>({
     items_id:data.items_id,
     name:data.name,
     Description:data.Description,
