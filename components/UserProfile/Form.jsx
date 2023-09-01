@@ -14,6 +14,7 @@ export const ItemForm = ({categories}) => {
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
   const [name, setName] = useState("")
   const [image, setImage] = useState()
+  const [categoryId,setCategoryId] = useState([])
   const [Description, setDescription] = useState("")
   const [price, setprice] = useState()
   const [Condition, setCondition] = useState()
@@ -42,7 +43,7 @@ export const ItemForm = ({categories}) => {
     return imagesecureUrl
   }
   const handleSubmit = async () => {
-    setloading(true)
+    setLoading(true)
     const imageData = await imageUploadData()
 
       createImages.push(
@@ -56,6 +57,7 @@ export const ItemForm = ({categories}) => {
         "price": price,
         "Image": createImages,
         "profile": profile,
+        "categoryId":categoryId,
         "Condition": Condition,
         "user_id": UserData
       }).then(function (response) {
