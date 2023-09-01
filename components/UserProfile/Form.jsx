@@ -6,8 +6,9 @@ import Link from "next/link";
 import ReactModal from "react-modal";
 import { usePathname, useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import Multiselect from 'multiselect-react-dropdown';
 
-export const ItemForm = () => {
+export const ItemForm = ({categories}) => {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenone, setModalIsOpenone] = useState(false);
@@ -159,6 +160,23 @@ export const ItemForm = () => {
                   profile
               </label>
           </div>  
+        </div>
+
+        <div className="mb-10 ">
+          <Multiselect
+            displayValue="CategoryName"
+            placeholder = "Category"
+            className="z-30 w-full px-0 lg:px-3 text-md lg:text-xl !text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+            onKeyPressFn={function noRefCheck(){}}
+            onRemove={function noRefCheck(){}}
+            onSearch={function noRefCheck(){}}
+            onSelect={(e)=>{
+              e.map((data,index)=>(
+                 setCategoryId([...categoryId, data.category_id])
+              ))
+            }}
+            options={categories}
+            />
         </div>
 
         <div className="relative flex-1 my-10">

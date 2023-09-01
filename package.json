@@ -21,6 +21,7 @@
     "http-status-codes": "^2.2.0",
     "jsonwebtoken": "^9.0.1",
     "moment": "^2.29.4",
+    "multiselect-react-dropdown": "^2.0.25",
     "next": "13.4.10",
     "next-auth": "^4.22.1",
     "next-sitemap": "^4.1.8",
