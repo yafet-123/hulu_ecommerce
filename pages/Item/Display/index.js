@@ -31,7 +31,8 @@ export async function getServerSideProps(context){
         select:{
           UserName:true,
           Image:true,
-          phonenumber:true
+          phonenumber:true,
+          email:true
         }
       },
     }

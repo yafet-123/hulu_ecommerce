@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { AiFillPhone, AiOutlineMail, AiOutlineUser } from 'react-icons/ai'
 // import {DeleteUser} from './DeleteUser.js'
 // import {UpdateUser} from './UpdateUser.js'
-
+ 
 export function DisplayUser({user}) {
     const router = useRouter();
     const [copied, setCopied] = useState("");
