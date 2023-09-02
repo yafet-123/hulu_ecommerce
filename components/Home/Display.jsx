@@ -13,7 +13,7 @@ export default function Display({ sale, session }) {
       pathname: '/profile',
       query: { user_id: sale.user.user_id },
     })
-  }
+  } 
   return (
     <Link 
       href={{
@@ -30,7 +30,7 @@ export default function Display({ sale, session }) {
             const { naturalWidth, naturalHeight } = target;
             setPaddingTop(`calc(100% / (${naturalWidth} / ${naturalHeight})`);
           }}
-          alt="latest news image"
+          alt="Display item"
         />
       </div>
       <div className="flex justify-between w-full lg:px-5 mt-16">

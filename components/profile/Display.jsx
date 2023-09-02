@@ -6,7 +6,12 @@ import moment from 'moment';
 export default function Display({ sale }) {
   const [paddingTop, setPaddingTop] = useState("0");
   return (
-    <Link href="/ " className="flex flex-col justify-between lg:pb-10">
+    <Link
+      href={{
+        pathname: '/Item/Display',
+        query: { id: sale.items_id },
+      }}
+      className="flex flex-col justify-between lg:pb-10">
       <div className="w-full !h-[20rem] relative mb-5">
         <Image
           src={sale.Image[0]}

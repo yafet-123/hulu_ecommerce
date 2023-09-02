@@ -32,8 +32,12 @@ export default function Display({item}) {
           <Image
             src={item.Image[0]}
             fill
-            className="bg-cover w-full h-full"
-            alt="imagea of the items"
+            objectFit="contain"
+            onLoad={({ target }) => {
+              const { naturalWidth, naturalHeight } = target;
+              setPaddingTop(`calc(100% / (${naturalWidth} / ${naturalHeight})`);
+            }}
+            alt="latest news image"
           />
         </div>
         {/*<div className="flex flex-wrap flex-row ">
