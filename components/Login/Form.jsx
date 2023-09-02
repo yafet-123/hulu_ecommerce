@@ -11,7 +11,7 @@ export function LoginForm({ csrfToken }) {
     const [error, setError] = useState(null);
     const { status, data } = useSession();
     useEffect(() => {
-        if (status === "authenticated") router.replace("/Admin");
+        if (status === "authenticated") router.replace("/");
     }, [status, router]);
 
     if (status === "unauthenticated")
@@ -27,7 +27,7 @@ export function LoginForm({ csrfToken }) {
                         const res = await signIn('credentials', {
                             username: values.username,
                             password: values.password,
-                            callbackUrl: "/Admin"
+                            callbackUrl: "/"
                         });
                         console.log(res)
                         if (res?.error) {
