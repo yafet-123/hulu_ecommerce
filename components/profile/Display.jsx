@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import moment from 'moment';
 
 export default function Display({ sale }) {
   const [paddingTop, setPaddingTop] = useState("0");
@@ -8,7 +9,7 @@ export default function Display({ sale }) {
     <Link href="/ " className="flex flex-col justify-between lg:pb-10">
       <div className="w-full !h-[20rem] relative mb-5">
         <Image
-          src={sale.Image}
+          src={sale.Image[0]}
           fill
           objectFit="contain"
           onLoad={({ target }) => {
@@ -29,7 +30,7 @@ export default function Display({ sale }) {
         </div>
         <div className="flex flex-col items-center mr-5">
           <p className="flex font-poppins text-md lg:text-lg font-normal text-left text-[#505e66] my-2 w-full mr-5">
-            {sale.posted}
+            {moment(sale.ModifiedDate).utc().format('MMMM, Do YYYY')}
           </p>
         </div>
       </div>

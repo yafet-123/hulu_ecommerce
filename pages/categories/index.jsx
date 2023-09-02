@@ -26,7 +26,9 @@ export async function getServerSideProps(context){
       include:{
           User:{
             select:{
-                UserName:true
+                UserName:true,
+                Image:true,
+                user_id:true
             }
           },
           ItemsCategory:{
