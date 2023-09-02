@@ -16,7 +16,8 @@ export async function getServerSideProps(context){
       User:{
         select:{
           UserName:true,
-          Image:true
+          Image:true,
+          user_id:true
         }
       },
     }
