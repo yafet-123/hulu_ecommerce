@@ -20,8 +20,8 @@ export default function Display({ sale, session }) {
         pathname: '/Item/Display',
         query: { id: sale.items_id },
       }}
-      className="flex flex-col justify-between lg:pb-10">
-      <div className="w-full !h-[15rem] relative mb-5">
+      className="flex flex-col lg:pb-10">
+      <div className="w-full !h-[15rem] relative">
         <Image
           src={sale.Image[0]}
           fill
@@ -33,7 +33,7 @@ export default function Display({ sale, session }) {
           alt="latest news image"
         />
       </div>
-      <div className="flex justify-between w-full lg:px-5">
+      <div className="flex justify-between w-full lg:px-5 mt-16">
         <div className="flex flex-col items-left font-serif antialiased leading-loose tracking-wide mr-20 w-full lg:w-[75%]">
           <h1 className="text-black text-left font-poppins font-semibold text-lg lg:text-xl text-[#D0DFFF] ">
             {sale.name}
