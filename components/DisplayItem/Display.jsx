@@ -26,18 +26,6 @@ export default function Display({item}) {
             alt="latest news image"
           />
         </div>
-        {/*<div className="flex flex-wrap flex-row ">
-          {Images.map((data, index) => (
-            <Image
-              key={index}
-              src={data}
-              width={100}
-              height={100}
-              className="p-5"
-              alt="imagea of the items"
-            />
-          ))}
-        </div>*/}
       </div>
 
       <div className="px-5 w-[40%]">
