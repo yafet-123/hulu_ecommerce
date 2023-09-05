@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { Navbar } from '../components/common/Navbar';
 import { SessionProvider } from "next-auth/react"
 import { ThemeProvider } from 'next-themes';
+import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 import 'nprogress/nprogress.css'; //styles of nprogress
 //Binding events. 
