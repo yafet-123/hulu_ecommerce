@@ -66,7 +66,7 @@ export const Navbar = () => {
           : 'fixed w-full h-20 z-[100] border-b-2 border-slate-100 '}
       `}
     >
-      <div className={` ${ open ? "bg-black bg-opacity-90" :"" } lg:justify-between justify-around px-5 lg:px-10 items-center lg:flex`}>
+      <div className={` ${ open ? "bg-slate-400 pacity-90" :"" } lg:justify-between justify-around px-5 lg:px-10 items-center lg:flex`}>
         <div className="flex items-center justify-between py-3 ">
           <h1 className={` ${ router.pathname == "/forgotPassword" ||shadow || open ? "text-white" : "text-black" } font-poppins text-xl md:text-2xl font-normal`}>
             Hulu Commerce
