@@ -24,9 +24,9 @@
 }
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+  @apply lg:absolute lg:right-0 lg:top-full mt-3 lg:p-5 rounded-lg lg:bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
 }
 
 .dropdown_link {
-  @apply text-sm text-gray-700 hover:text-gray-500 font-medium;
+  @apply text-sm text-white lg:text-gray-700 hover:text-gray-500 font-medium;
 }
