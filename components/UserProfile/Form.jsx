@@ -89,16 +89,16 @@ export const ItemForm = ({categories}) => {
   return (
     <div className="w-full flex flex-col items-center space-y-6 px-5 lg:px-52">
       <form className="max-w-7xl lg:mx-auto bg-gray-200 p-5 rounded-lg" onSubmit={addItem}>
-        <h3 className="font-poppins text-left text-[#010101] font-bold text-4xl lg:tetx-6xl mb-5">
+        <h3 className="font-poppins text-left text-[#010101] font-bold text-xl lg:tetx-6xl mb-5">
            Create and share amazing products with the world, and let your imagination run wild
         </h3>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-10 px-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:my-10 px-2">
           <div className="relative mb-5">
               <input 
                   id="name" 
                   type="text" 
                   required
-                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-2 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
                   value={name}
                   onChange={(e) => setName(e.target.value)}
               />
@@ -115,7 +115,7 @@ export const ItemForm = ({categories}) => {
                   id="price" 
                   type="text" 
                   required
-                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-2 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
                   value={price}
                   onChange={(e) => setprice(e.target.value)}
               />
@@ -128,13 +128,13 @@ export const ItemForm = ({categories}) => {
           </div>  
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-10 px-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5 px-2">
           <div className="relative mb-5">
               <input 
                   id="Condition" 
                   type="text" 
                   required
-                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-2 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
                   value={Condition}
                   onChange={(e) => setCondition(e.target.value)}
               />
@@ -151,7 +151,7 @@ export const ItemForm = ({categories}) => {
                   id="profile" 
                   type="text" 
                   required
-                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+                  className="block w-full px-3 text-md lg:text-xl text-black bg-white py-2 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
                   value={profile}
                   onChange={(e) => setProfile(e.target.value)}
               />
@@ -168,7 +168,7 @@ export const ItemForm = ({categories}) => {
           <Multiselect
             displayValue="CategoryName"
             placeholder = "Category"
-            className="z-30 w-full px-0 lg:px-3 text-md lg:text-xl !text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+            className="z-30 w-full px-0 lg:px-3 text-md lg:text-xl !text-black bg-white py-2 border-2 border-black rounded-xl appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer"
             onKeyPressFn={function noRefCheck(){}}
             onRemove={function noRefCheck(){}}
             onSearch={function noRefCheck(){}}
@@ -181,13 +181,13 @@ export const ItemForm = ({categories}) => {
             />
         </div>
 
-        <div className="relative flex-1 my-10">
+        <div className="relative flex-1 mb-5">
           <textarea 
               id="Description" 
               rows="7" 
               cols="50"
               required
-              className="block w-full px-3 text-md lg:text-xl text-black bg-white py-4 border-2 border-black rounded-xl appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
+              className="block w-full px-3 text-md lg:text-xl text-black bg-white py-2 border-2 border-black rounded-xl appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-500 peer" placeholder=" "
               value={Description}
               onChange={(e) => setDescription(e.target.value)}
           />

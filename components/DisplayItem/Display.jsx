@@ -13,7 +13,7 @@ export default function Display({item}) {
   }
   return (
     <div className="flex flex-col lg:flex-row w-full h-full mb-10">
-      <div className="w-[60%] px-5">
+      <div className="w-full lg:w-[60%] px-5">
         <div className="w-full !h-[30rem] relative mb-5">
           <Image
             src={item.Image[0]}
@@ -28,7 +28,7 @@ export default function Display({item}) {
         </div>
       </div>
 
-      <div className="px-5 w-[40%]">
+      <div className="px-5 w-full lg:w-[40%]">
         <h1 className="text-black text-left font-poppins font-bold text-xl lg:text-3xl text-[#D0DFFF] ">
           {item.name}
         </h1>
